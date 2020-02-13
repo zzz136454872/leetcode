@@ -22,9 +22,9 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     {
         if(loc1<nums1Size&&loc2<nums2Size)
         {
-            if( nums1[loc1] < nums2[loc2])
+            if(nums1[loc1]<nums2[loc2])
             {
-                
+
                 min=nums1[loc1];
                 loc1++;
             }
@@ -52,7 +52,7 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
         {
             if( nums1[loc1] < nums2[loc2])
             {
-                
+
                 min=nums1[loc1];
                 loc1++;
             }
