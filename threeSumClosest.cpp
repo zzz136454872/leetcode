@@ -2,8 +2,17 @@
 #include<string>
 #include<vector>
 #include<algorithm>
-
 using namespace std;
+
+//#define test
+
+#ifdef test
+void testFunc()
+{
+    int t=-1;
+    cout<<abs(t)<<endl;
+}
+#endif
 
 bool cmp(int a,int b)
 {
@@ -14,58 +23,38 @@ class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
         sort(begin(nums),end(nums),cmp);
-        int high,low,mid,target;
+        int high,low;
+        int tmp;
+        int sum=1<<25;
+        
         for(unsigned long long i=0;i<nums.size()-2;i++)
         {
-            if(i!=0&&nums[i]==nums[i-1])
-                continue;
-            for(unsigned long long j=i+1;j<nums.size()-1;j++)
+            low=i+1;
+            high=nums.size()-1;
+            while(low<high)
             {
-                if(j!=i+1&&nums[j]==nums[j-1])
-                    continue;
-                low=j+1;
-                high=nums.size();
-                target=-1*(nums[i]+nums[j]);
-                while(low<=high)
-                {
-                    mid=(high+low)/2;
-                    if(nums[mid]==target)
-                    {
-                        out.push_back({nums[i],nums[j],nums[mid]});
-                        break;
-                    }
-                    else if(nums[mid]<target)
-                    {
-                        low=mid+1;
-                    }
-                    else
-                    {
-                        high=mid-1;
-                    }
-                }
+                tmp=nums[high]+nums[low]+nums[i];
+                if(abs(tmp-target) < abs(sum-target))
+                    sum=tmp;
+                if(tmp < target)
+                    low++;
+                else
+                    high--;
             }
         }
-        return out;
+        return sum;
     }
 };
 
 int main()
 {
+#ifdef test
+    testFunc();
+#endif
     Solution sl;
-
-    vector<int> in = {-1, 0, 1, 2, -1, -4};
-    vector<int> in2;
-    vector<vector<int>> out = sl.threeSum(in);
-
-    for(unsigned long long i=0;i<out.size();i++)
-    {
-        for(unsigned long long j=0;j<out[1].size();j++)
-        {
-            cout<<out[i][j]<<" ";
-        }
-        cout<<endl;
-    }
-
+    vector<int> in = {-1,2,1,-4};
+    int out = sl.threeSumClosest(in,1);
+    cout<<out<<endl;
     return 0;
 }
 
