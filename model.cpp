@@ -14,13 +14,17 @@ void test()
 }
 #endif
 
+#ifndef testMod
+
 class Solution {
+private:
+
+
 public:
 
-private:
-    
     
 };
+#endif
 
 int main()
 {
@@ -28,10 +32,10 @@ int main()
     test();
 #endif
 
+#ifndef testMod
     Solution sl;
 
-
+#endif 
     return 0;
 }
-
 

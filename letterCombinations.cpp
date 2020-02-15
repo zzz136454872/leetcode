@@ -17,29 +17,66 @@ void test()
     ss.push_back(test);
     cout<<"in test"<<endl;
     for(unsigned long long i=0;i<ss.size();i++)
-        cout<<ss[i]<<endl;
+    {
+        for(unsigned long long j=0;j<ss[i].size();j++)
+        {
+
+            cout<<ss[i][j]<<endl;
+        }
+    }
     cout<<ss.size()<<endl;
 }
 #endif
 
-class Solution {
+#ifndef testMod
+class Solution
+{
+private:
+    vector<string> out;
+    string nums;
+    string num[10] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
 public:    
     vector<string> letterCombinations(string digits) {
-        vector<string> out;
+        if(digits.size()==0)
+            return out;
+        nums=digits;
+        getstring(0,"");
         return out;
     }
 
-private:
-    
+    void getstring(unsigned long long loc,string str)
+    {
+        //cout<<loc<<" "<<nums<<" "<<str<<endl;
+        if(loc==nums.size())
+        {
+            out.push_back(str);
+            return ;
+        }
+        //cout<<num[nums[loc]-'0']<<endl;
+        for(unsigned long long i=0;i<num[nums[loc]-'0'].size();i++)
+        {
+            //cout<<i<<endl;
+            getstring(loc+1,str+num[nums[loc]-'0'][i]);
+        }
+    }
 };
+#endif
 
 int main()
 {
 #ifdef testMod
     test();
 #endif
+    
+#ifndef testMod
     Solution sl;
-
-
+    string a ="23";
+    vector<string> out = sl.letterCombinations(a);
+    cout<<"main"<<endl;
+    for(unsigned long long i=0;i<out.size();i++)
+        cout<<out[i]<<endl;
+    
+#endif
     return 0;
 }
