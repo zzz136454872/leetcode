@@ -7,8 +7,6 @@
 #include<string>
 #include<vector>
 #include<algorithm>
-#include<map>
-#include<stack>
 
 using namespace std;
 
@@ -24,25 +22,35 @@ void test()
 #ifndef testMod
 
 class Solution {
-public:
-    Solution() {
-        list['}']='{';
-        list[']']='[';
-        list[')']=')';
-        list['(']=0;
-        list['[']=0;
-        list['{']=0;
-    }
-    
-    bool isValid(string s) {
-        
-        return 
-
-    }
 private:
-    map<char,char> list;
-    return 
 
+
+public:
+    int strStr(string haystack, string needle) {
+        if(needle.size() ==0)
+            return 0;
+        if(haystack.size()<needle.size())
+            return -1;
+       
+        for(unsigned long long i=0;i<haystack.size();i++)
+        {
+            unsigned long long j;
+            bool right=true;
+            for(j=0;j<needle.size();j++)
+            {
+                if(i+j >= haystack.size())
+                    return -1;
+                if(haystack[i+j]!=needle[j])
+                {
+                    right=false;
+                    break;
+                }
+            }
+            if(right)
+                return i;
+        }
+        return -1;
+    }
 };
 #endif
 
