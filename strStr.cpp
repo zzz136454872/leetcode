@@ -24,12 +24,25 @@ void test()
 #ifndef testMod
 
 class Solution {
-private:
-
-
 public:
-
+    Solution() {
+        list['}']='{';
+        list[']']='[';
+        list[')']=')';
+        list['(']=0;
+        list['[']=0;
+        list['{']=0;
+    }
     
+    bool isValid(string s) {
+        
+        return 
+
+    }
+private:
+    map<char,char> list;
+    return 
+
 };
 #endif
 
@@ -41,6 +54,9 @@ int main()
 
 #ifndef testMod
     Solution sl;
+    string haystack = "abababc",needle = "ababc";
+    int test=sl.strStr(haystack,needle);
+    cout<<"test: "<<test<<endl;
 
 #endif 
     return 0;
