@@ -39,7 +39,7 @@ public:
             return l2;
         else if(l2==NULL)
             return l1;
-        if(tmp2->val< tmp2->val)
+        if(tmp1->val< tmp2->val)
         {
             end=tmp1;
             out=tmp1;
