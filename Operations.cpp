@@ -26,12 +26,22 @@ void test()
 
 class Solution {
 public:
-
-
-        
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        loc1=loc2=0;
+        for(loc2=0;loc2<nums.size();loc2++)
+        {
+            if(nums[loc2]==nums[loc1])
+                continue;
+            loc1++;
+            nums[loc1]=nums[loc2];
+        }
+        return loc1+1;
+    }
 private:
-
-
+    int loc1,loc2;
+};
 
 #endif
 
