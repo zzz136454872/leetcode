@@ -41,39 +41,47 @@ private:
 
 
 public:
-    ListNode* swapPairs(ListNode* head) {
-        if(head==NULL||head->next==NULL)
-            return head;
-        ListNode *tmp0=NULL,*tmp1=head,*tmp2=head->next,*tmp3=tmp2->next;
-        tmp1->next=tmp3;
-        tmp2->next=tmp1;
-        head=tmp2;
-        show(head);
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        list=new ListNode*[k];
+        if(head==NULL)
+            return NULL;
+        ListNode *tmp0=head,*tmpk;
+
+        for(int i=0;i<k;i++)
+        {
+            list[i]=tmp0;
+            tmp0=tmp0->next;
+            if(tmp0==NULL&&i!=k-1)
+                return head;
+        }
+        
+        for(int i=0;i<k-1;i++)
+        {
+            list[i+1]->next=list[i];
+        }
+
+        list[0]->next=tmp0;
+        head=list[k-1];
+        
         while(true)
         {
-            cout<<"tmp1 "<<tmp1->val<<endl;
-            cout<<"tmp2 "<<tmp2->val<<endl;
-            tmp0=tmp1;
-            tmp1=tmp0->next;
-            if(tmp1==NULL)
+            tmp0=list[0];
+            for(int i=0;i<k;i++)
             {
-                cout<<"end1"<<endl;
-                return head;
+                if(i==0)
+                    list[0]=tmp0->next;
+                else
+                    list[i]=list[i-1]->next;
+                if(list[i]==NULL)
+                    return head;
             }
-            tmp2=tmp1->next;
-            if(tmp2==NULL)
+            tmpk=list[k-1]->next;
+            for(int i=0;i<k-1;i++)
             {
-                cout<<"end2"<<endl;
-                return head;
+                list[i+1]->next=list[i];
             }
-            tmp3=tmp2->next;
-            if(tmp3==NULL)
-                cout<<"tmp3 null"<<endl;
-            else
-                cout<<"tmp3 "<<tmp3->val<<endl;
-            tmp1->next=tmp3;
-            tmp2->next=tmp1;
-            tmp0->next=tmp2;
+            tmp0->next=list[k-1];
+            list[0]->next=tmpk;
         }
     }
 
@@ -87,6 +95,10 @@ public:
         }
         cout<<endl;
     }
+
+private:
+    ListNode** list;
+    
 };
 #endif
 
@@ -99,7 +111,7 @@ int main()
 #ifndef testMod
     Solution sl;
     ListNode* head=getnode(1), *end=head;
-    for(int i=0;i<3;i++)
+    for(int i=0;i<1;i++)
     {
         end->next=getnode(i+2);
         end=end->next;
@@ -111,7 +123,7 @@ int main()
         end=end->next;
     }
 
-    head=sl.swapPairs(head);
+    head=sl.reverseKGroup(head,2);
     end=head;
     cout<<"main"<<endl;
     while(end!=NULL)
