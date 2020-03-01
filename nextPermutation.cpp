@@ -59,7 +59,6 @@ public:
         while(nums[j] <= nums[i-1])
             j++;
 
-
         tmp=nums[j];
         nums[j]=nums[i-1];
         nums[i-1]=tmp;

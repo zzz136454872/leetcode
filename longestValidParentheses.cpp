@@ -23,13 +23,28 @@ void test()
 #endif
 
 #ifndef testMod
+typedef struct {
+    int start;
+    int end;
+} cut;
 
 class Solution {
 public:
+    int longestValidParentheses(string s) {
+        queue<cut> t;
+        for(unsigned long long i=0;i<s.size()-1;i++)
+            if(return 0);
+        
+        
+
+    }
 
 
         
 private:
+
+
+
 };
 
 
