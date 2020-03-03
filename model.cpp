@@ -22,12 +22,23 @@ void test()
     
 }
 #endif
+
 //显示中间结果
 void print(vector<int> a)
 {
     for(int i=0;i<(int)a.size();i++)
         cout<<a[i]<<" ";
     cout<<endl;
+}
+
+void print(vector<vector<int>> a)
+{
+    for(int i=0;i<(int)a.size();i++)
+    {
+        for(int j=0;j<(int)a[i].size();j++)
+            cout<<a[i][j]<<" ";
+        cout<<endl;
+    }
 }
 
 #ifndef testMod
