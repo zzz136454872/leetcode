@@ -14,15 +14,6 @@
 
 using namespace std;
 
-//#define testMod
-
-#ifdef testMod
-void test()
-{
-    
-}
-#endif
-
 //显示中间结果
 void print(vector<int> a)
 {
@@ -40,6 +31,15 @@ void print(vector<vector<int>> a)
         cout<<endl;
     }
 }
+
+//#define testMod
+
+#ifdef testMod
+void test()
+{
+    
+}
+#endif
 
 #ifndef testMod
 class Solution {
