@@ -32,6 +32,32 @@ void print(vector<vector<int>> a)
     }
 }
 
+void print(vector<bool> a)
+{
+    for(int i=0;i<(int)a.size();i++)
+    {
+        cout<<i<<" ";
+        if(a[i])
+            cout<<"true ";
+        else
+            cout<<"false ";
+    }
+    cout<<endl;
+}
+
+void print(bool a[],int len)
+{
+    for(int i=0;i<len;i++)
+    {
+        cout<<i<<" ";
+        if(a[i])
+            cout<<"true ";
+        else
+            cout<<"false ";
+    }
+    cout<<endl;
+}
+
 //#define testMod
 
 #ifdef testMod

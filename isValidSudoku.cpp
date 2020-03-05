@@ -84,7 +84,7 @@ public:
             if(checkVert(j)==false)
                 return false;
         }
-        cout<<"flag"<<endl;
+        //cout<<"flag"<<endl;
         for(int i=0;i<3;i++)
         {
             for(int j=0;j<3;j++)
@@ -94,7 +94,7 @@ public:
                     return false;
             }
         }
-        cout<<"flag2"<<endl;
+        //cout<<"flag2"<<endl;
         return true;
     }
 
@@ -133,11 +133,11 @@ public:
         {
             for(int h=0;h<3;h++)
             {
-                if(i==1&&j==0)
-                {
-                    cout<<"k "<<k<<" h "<<h<<" board "<<endl;
-                    print(table,10);
-                }
+                //if(i==1&&j==0)
+                //{
+                //    cout<<"k "<<k<<" h "<<h<<" board "<<endl;
+                //    print(table,10);
+                //}
                 if(board[3*i+k][3*j+h]=='.')
                     continue;
                 if(table[(int)board[3*i+k][3*j+h]-'0'])
