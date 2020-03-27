@@ -21,6 +21,7 @@ class Solution:
                 break
             if board[i][j]=='p':
                 capture+=1
+                break
             j-=1
         j=x
         #left
@@ -29,6 +30,7 @@ class Solution:
                 break
             if board[i][j]=='p':
                 capture+=1
+                break
             i-=1
         #down
         i=y
@@ -37,6 +39,7 @@ class Solution:
                 break
             if board[i][j]=='p':
                 capture+=1
+                break
             j+=1
         #right
         j=x
@@ -45,6 +48,7 @@ class Solution:
                 break
             if board[i][j]=='p':
                 capture+=1
+                break
             i+=1
         return capture
     
