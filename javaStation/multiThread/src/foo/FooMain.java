@@ -3,20 +3,59 @@ package foo;
 import java.util.concurrent.Semaphore;
 
 public class FooMain {
-	static Foo foo;
+	Foo foo;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		foo=new Foo();
+		FooMain f=new FooMain();
+		f.work();
+	}
+	
+	public void work() {
+	    foo=new Foo();
+		Thread t1,t2,t3;
+		t1=new Thread(new Caller(foo,1));
+		t2=new Thread(new Caller(foo,2));
+		t3=new Thread(new Caller(foo,3));
+		t2.start();
+		t1.start();
+		t3.start();
+	}
+}
+
+class Caller implements Runnable {
+	Foo f;
+	int which;
+	
+	Caller(Foo f,int func) {
+		this.f=f;
+		this.which=func;
+
+	}
+	
+	public void run()
+	{
 		try {
-			foo.second(new S());
-			foo.first(new F());
-			foo.third(new T());;
+			switch(which)
+			{
+			case 1:
+					f.first(new F());
+				break;
+			case 2:
+				f.second(new S());
+				break;
+			case 3:
+				f.third(new T());
+				break;
+			default:
+				System.out.println("error");
+			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	
 }
 
 class Foo {
