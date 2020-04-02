@@ -70,7 +70,6 @@ void test()
 #ifndef testMod
 class Solution {
 public:
-    public:
     vector<int> maxDepthAfterSplit(string seq) {
         vector<int> out;
         
