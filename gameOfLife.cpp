@@ -73,12 +73,10 @@ public:
     void gameOfLife(vector<vector<int>>& board) {
         b=board;
         int c;
-        cout<<"flag2"<<endl;
         for(int i=0;i<(int)board.size();i++)
         {
             for(int j=0;j<(int)board[0].size();j++)
             {
-                cout<<"flag3"<<(int)board.size()<<(int)board[0].size()<<endl;
                 c=count(i,j);
                 if(b[i][j]==1)
                 {
