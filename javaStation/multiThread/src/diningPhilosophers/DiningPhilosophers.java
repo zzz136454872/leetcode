@@ -21,27 +21,27 @@ class DiningPhilosophers {
                            Runnable putRightFork) throws InterruptedException {
         if(philosopher%2==0) {
             sList[philosopher].acquire();
-            pickLeftFork.run();
             sList[(philosopher+1)%5].acquire();
+            pickLeftFork.run();
             pickRightFork.run();
         } 
         else {
             sList[(philosopher+1)%5].acquire();
-            pickRightFork.run();
             sList[philosopher].acquire();
+            pickRightFork.run();
             pickLeftFork.run();
         }
         eat.run();
         if(philosopher%2==0) {
             putLeftFork.run();
-            sList[philosopher].release();
             putRightFork.run();
+            sList[philosopher].release();
             sList[(philosopher+1)%5].release();
         } 
         else {
             putRightFork.run();
-            sList[(philosopher+1)%5].release();
             putLeftFork.run();
+            sList[(philosopher+1)%5].release();
             sList[philosopher].release();
         }
     }
