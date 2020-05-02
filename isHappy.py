@@ -17,11 +17,6 @@ class Solution:
             if n in log:
                 return False
             log.append(n)
-TypeError: next1() takes 1 positional argument but 2 were given
-    line = next1(lines, None)
-Line 35 in _driver (Solution.py)
-    _driver()
-Line 51 in <module> (Solution.py)
 
 
 inp=19
