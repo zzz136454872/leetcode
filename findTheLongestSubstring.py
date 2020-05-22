@@ -11,7 +11,7 @@ class Solution:
             if now not in before.keys():
                 before[now]=i
             max_len=max(max_len,i-before[now])
-            print(before)
+            #print(before)
         return max_len
 
 s = "leetcodeisgreat"
