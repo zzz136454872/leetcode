@@ -1,0 +1,18 @@
+
+class Solution:
+    def masterMind(self, solution: str, guess: str) -> List[int]:
+        right=0
+        for i in range(4):
+            if solution[i]==guess[i]:
+                right+=1
+        seem=0
+        for i in range(4):
+            if guess[i] in solution and guess[i]!=solution[i]:
+                seem+=1
+        return [right,seem]
+
+sl=Solution()
+solution="RGBY"
+guess="GGRR"
+print(sl.masterMind(solution,guess))
+        
