@@ -43,6 +43,3 @@ sl=Solution()
 
 print(sl.wordBreak(s,wordDict))
 
-
-            
-            

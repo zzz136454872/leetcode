@@ -5,7 +5,10 @@ class Solution:
        
     def coinChange(self, coins, amount) -> int:
         self.coins=coins
-        return self.find(amount)
+        tmp=self.find(amount)
+        if tmp==1000000:
+            return -1
+        return tmp
     
     def find(self,amount):
         if amount==0:
@@ -15,7 +18,7 @@ class Solution:
         if amount in self.dic.keys():
             return self.dic[amount]
         count=1000000
-        for num in coins:
+        for num in self.coins:
             tmp=self.find(amount-num)
             if tmp==-1:
                 continue
@@ -24,7 +27,7 @@ class Solution:
         return count
 
 sl=Solution()
-coins=[1,2,5]
+coins=[12,20,5]
 amount=11
 out=sl.coinChange(coins,amount)
 print(out)
