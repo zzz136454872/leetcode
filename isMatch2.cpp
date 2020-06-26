@@ -80,7 +80,9 @@ class Solution {
 public:
     bool isMatch(string s, string p) {
         this->s=s;
-        this->p=shorten(p);
+        //this->p=shorten(p);
+        this->p=p;
+        cout<<"shorten p "<<this->p<<endl;
         for(int i=(int)(this->p).size(),j=(int)s.size();i>0&&j>0;i--,j--)
         {
             if((this->p)[i]=='*')
@@ -96,16 +98,21 @@ public:
 
     string shorten(string p)
     {
-        int i=0;
-        while(i<(int)p.size()-1)
+        int start=-1,end=-1;
+        for(int i=0;i<(int)p.size();i++)
         {
-            if(p[i]=='*' and p[i+1]=='*')
-                p.erase(i,1);
-            else
-                i++;
-            cout<<"p"<<p<<endl;
+            if(p[i]=='*')
+            {
+                if(start==-1)
+                    start=i;
+                end=i;
+            }
         }
-        return p;
+        cout<<"start "<<start<<" end "<<end<<endl;
+        if(start<end)
+            return p.substr(start)+p.substr(end);
+        else
+            return p;
     }
 
     bool match(char a, char b)
@@ -123,7 +130,7 @@ public:
         else if(log[s_loc*s.size()+p_loc]==1)
             return true;
         cout<<"test "<<s_loc<<" "<<p_loc<<endl;
-        while(s_loc<s.size()&&p_loc<p.size()&&match(s[s_loc],p[p_loc]))
+        while(s_loc<(int)s.size()&&p_loc<(int)p.size()&&match(s[s_loc],p[p_loc]))
         {
             //cout<<s[s_loc]<<p[p_loc]<<endl;
             s_loc++;
@@ -132,9 +139,9 @@ public:
         //if(s_loc > 10 || p_loc>10)
         //  exit(0);
         cout<<"test1 "<<s_loc<<" "<<p_loc<<endl;
-        if(s_loc==s.size())
+        if(s_loc==(int)s.size())
         {
-            if(p_loc==p.size())
+            if(p_loc==(int)p.size())
             {
                 log[s_loc*s.size()+p_loc]=1;
                 return true;
@@ -158,7 +165,7 @@ public:
                 return true;
             }
             cout<<"flag0 "<<s_loc<<" "<<p_loc<<endl;
-            while(s_loc<s.size())
+            while(s_loc<(int)s.size())
             {
                 if(test(s_loc+1,p_loc+1))
                 {
