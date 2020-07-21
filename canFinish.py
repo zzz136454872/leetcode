@@ -8,8 +8,6 @@ class Solution:
         for depend in prerequisites:
             log[depend[0]].append(depend[1])
             log2[depend[1]].append(depend[0])
-        print(log)
-        print(log2)
         def visit(a):
             visited[a]=True
             for course in log2[a]:
@@ -26,8 +24,6 @@ class Solution:
                 i=0
             else:
                 i+=1
-            print('flag')
-        print(visited)
         return not (False in visited)
 inp1=3
 inp2=[[1,0],[2,1],[0,2]] 
