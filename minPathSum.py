@@ -11,6 +11,7 @@ class Solution:
                 if j>0:
                     dp[i][j]=min(dp[i][j],dp[i][j-1]+grid[i][j])
         return dp[-1][-1]
+
 inp=[ [1,3,1], [1,5,1], [4,2,1] ]
 sl=Solution()
 print(sl.minPathSum(inp))
