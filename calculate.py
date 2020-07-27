@@ -22,10 +22,16 @@ class Solution:
                 i+=1
         return calc_sub(l)
 
-
     def calc_sub(l):
         if len(l)==1:
             return l[0]
+        if s[-1]==')':
+            loc=s.index('(')
+            tmp=self.calc_sub(l[loc+1:len(l)-1])
+            if loc==0:
+                return tmp
+            else:
+
         num=l[-1]
         if l[-2] == '+':
             return calc_sub(l[:-2])+num
