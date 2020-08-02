@@ -9,7 +9,7 @@ class Solution:
         if avg*len(machines)!=total:
             return -1
         machines=[i-avg for i in machines]
-        print(machines)
+        #print(machines)
         tmp=0
         out=0
         for m in machines:
