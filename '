@@ -25,14 +25,9 @@ class Solution:
             end=len(log)-1
             while start<=end:
                 mid=(start+end)//2
-                if log[mid]>=num:
+                if log[mid]>=nums[i]:
                     end=mid-1
                 else:
                     start=mid+1
-            log[start]=num
-        return len(log)
 
-sl=Solution()
-nums=[10,9,2,5,3,7,101,18]
-print(sl.lengthOfLIS(nums))
-    
+        return max(log)
