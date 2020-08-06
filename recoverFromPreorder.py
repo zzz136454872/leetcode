@@ -9,7 +9,6 @@ class TreeNode:
 
 class Solution:
     def recoverFromPreorder(self, S: str) -> TreeNode:
-        print('s',S)
         if len(S)==0:
             return None
         if not '-' in S:
@@ -28,8 +27,6 @@ class Solution:
                 i+=1
         left=S[:i]
         right=S[i:]
-        print('left',left)
-        print('right',right)
         left=self.trim(left)
         right=self.trim(right)
         root.left=self.recoverFromPreorder(left)
