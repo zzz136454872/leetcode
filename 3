@@ -1,0 +1,33 @@
+from typing import *
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class Solution:
+    def recoverTree(self, root: TreeNode) -> None:
+        pre=None
+        x=None
+        y=None
+        def midOrder(root_now):
+            if root_now==None:
+                return
+            midOrder(root_now.left)
+            if pre!=None and pre.val>root_now.val:
+                print('flag')
+                if x==None:
+                    x=pre
+                y=root_now
+            pre=root_now
+            midOrder(root_now.right)
+        midOrder(root)
+        x.val,y.val=y.val,x.val
+
+sl=Solution()
+root=TreeNode(1)
+root.left=TreeNode(3)
+root.left.right=TreeNode(2)
+print(sl.recoverTree(root))
+          
