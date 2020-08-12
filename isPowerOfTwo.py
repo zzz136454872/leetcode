@@ -12,5 +12,5 @@ class Solution:
             
 
 sl=Solution()
-inp=1234
+inp=16
 print(sl.isPowerOfTwo(inp))
