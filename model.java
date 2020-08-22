@@ -12,7 +12,6 @@ public class Model {
     public static void main(String [] args) {
         Solution sl=new Solution();
         System.out.println("main");
-        
     }
 }
 

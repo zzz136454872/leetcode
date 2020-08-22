@@ -32,8 +32,6 @@ class Codec:
         data.pop(0)
         while len(data)>0:
             node=queue.pop(0)
-            print(node)
-            print(node.val)
             left=data.pop(0)
             right=data.pop(0)
             if left!=None:
