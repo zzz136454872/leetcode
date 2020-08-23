@@ -22,6 +22,7 @@ def test(m,n):
     for i in range(m,n):
         out=out&i
     return out
+
 print('test',test(0,2))
     
 sl=Solution()
