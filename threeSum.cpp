@@ -11,6 +11,8 @@ bool cmp(int a,int b)
     return a < b; //升序
 }
 
+//not understanding why head overflow
+
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -59,8 +61,7 @@ public:
 int main()
 {
     Solution sl;
-
-    vector<int> in = {-1, 0, 1, 2, -1, -4};
+    vector<int> in = {1,2,-2,-1};
     vector<int> in2;
     vector<vector<int>> out = sl.threeSum(in);
 
