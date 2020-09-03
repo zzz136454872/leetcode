@@ -58,6 +58,21 @@ void print(bool a[],int len)
     cout<<endl;
 }
 
+void print(vector<string> a)
+{
+    for(int i=0;i<(int)a.size();i++)
+        cout<<a[i]<<endl;
+}
+
+void print(vector<vector<string>> a)
+{
+    for(int i=0;i<(int)a.size();i++)
+    {
+        print(a[i]);
+        cout<<endl;
+    }
+}
+
 //#define testMod
 
 #ifdef testMod
