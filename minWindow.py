@@ -1,7 +1,5 @@
 from typing import *
 
-# wa 
-
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         tCount=dict()
