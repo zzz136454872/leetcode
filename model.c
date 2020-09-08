@@ -21,6 +21,7 @@ void print_int_2star(int **matrix,int row,int col)
         print_int_star(matrix[i],col);
 }
 
+#define max(a,b) (((a)>(b))?(a):(b))
 
 int main()
 {
