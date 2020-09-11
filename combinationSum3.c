@@ -65,7 +65,7 @@ int* find(int num, int k)
 int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes){
     int outSize=0;
     int bufferSize=2;
-    int **out=(int**)malloc(sizeof(int*)*511);
+    int **out=(int**)malloc(sizeof(int*)*bufferSize);
     for(int i=1;i<512;i++)
     {
         if(count(i)==k)
@@ -73,6 +73,11 @@ int** combinationSum3(int k, int n, int* returnSize, int** returnColumnSizes){
             if(add(i)==n)
             {
                 out[outSize++]=find(i,k);
+                if(outSize==bufferSize)
+                {
+                    bufferSize*=2;
+                    out=(int**)realloc(out, bufferSize*sizeof(int*));
+                }
             }
         }
     }
@@ -87,9 +92,8 @@ int main()
 {
     int outSize;
     int *returnColumnSizes;
-    int i=4;
-    int** out=combinationSum3(3,9,&outSize, &returnColumnSizes);
-    print_int_2star(out,outSize, 3);
+    int** out=combinationSum3(2,6,&outSize, &returnColumnSizes);
+    print_int_2star(out,outSize, 2);
     return 0;
 }
 
