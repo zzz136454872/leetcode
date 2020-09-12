@@ -43,17 +43,18 @@ void travelBinaryTree(node* root)
     travelBinaryTree(root->r);
 }
 
-node* tree2binTree(node* root)
+node* tree2BinaryTree(node* root)
 {
     if(root==NULL||root->son[0]==NULL)
         return root;
     root->l=root->son[0];
     node* tmp=root->son[0];
+    tree2BinaryTree(tmp);
     for(int i=1;i<root->sonLen;i++)
     {
-        tree2binTree(tmp);
         tmp->r=root->son[i];
         tmp=tmp->r;
+        tree2BinaryTree(tmp);
     }
     return root;
 }
@@ -78,16 +79,15 @@ node* binaryTree2Tree(node* root)
 
 int main()
 {
-    node* root=getNode(0);
-    root->son[0]=getNode(1);
-    root->son[1]=getNode(2);
-    root->son[2]=getNode(3);
-    root->sonLen=3;
-    root->son[1]->son[0]=getNode(4);
-    root->son[1]->sonLen=1;
+    node* root=getNode(7);
+    root->son[0]=getNode(8);
+    root->sonLen=1;
+    root->son[0]->son[0]=getNode(9);
+    root->son[0]->son[1]=getNode(10);
+    root->son[0]->sonLen=2;
     travelTree(root);
     putchar('\n');
-    root=tree2binTree(root);
+    root=tree2BinaryTree(root);
     travelBinaryTree(root);
     putchar('\n');
     root=binaryTree2Tree(root);
