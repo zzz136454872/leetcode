@@ -31,7 +31,8 @@ node* getGeneralList(char* str)
     if(str[0]!='(')
         return NULL;
     node*head=getNode();
-    char buffer[100];
+    char *buffer=NULL;
+    int bufferSize=0;
     int i=1;
     node*p=head;
     while(i<strlen(str)-1)
@@ -48,7 +49,13 @@ node* getGeneralList(char* str)
                     log++;
                 j++;
             }
+            if(buffer==NULL)
+                buffer=(char*)malloc(j-i+1);
+            else if(bufferSize<j-i+1)
+                buffer=(char*)realloc(buffer,j-i+1);
+            bufferSize=max(bufferSize, j-i+1);
             strncpy(buffer,str+i,j-i);
+            buffer[j-i]=0;
             p->next=getNode();
             p=p->next;
             //printf("call sub\n");
@@ -69,6 +76,8 @@ node* getGeneralList(char* str)
         else
             i++;
     }
+    if(buffer!=NULL)
+        free(buffer);
     return head;
 }
 
