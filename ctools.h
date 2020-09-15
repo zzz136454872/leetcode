@@ -21,3 +21,4 @@ void print_double_star(double *list, int len)
 }
 
 #define max(a,b) (((a)>(b))?(a):(b))
+#define min(a,b) (((a)>(b))?(a):(b))
