@@ -17,6 +17,11 @@ void test()
 }
 #endif
 
+#ifndef testMod
+// your code here
+
+#endif
+
 int main()
 {
 #ifdef testMod
