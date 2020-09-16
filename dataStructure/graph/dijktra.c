@@ -2,22 +2,7 @@
 #include"../../ctools.h"
 #include<stdlib.h>
 #include<string.h>
-
-typedef struct l{
-    int from;
-    int to;
-    int weight;
-} line;
-
-typedef struct qn{
-    line *l;
-    struct qn* next;
-} queueNode;
-
-typedef struct {
-    queueNode* head, *tail;
-    int size;
-} lineQueue;
+#define INF 123456
 
 typedef struct n{
     int val;
@@ -30,60 +15,11 @@ typedef struct nn{
     node** data;
 } adjacencyList;
 
-line* getLine(int from, int to, int weight)
-{
-    line* out=(line*)malloc(sizeof(line));
-    out->from=from;
-    out->to=to;
-    out->weight=weight;
-    return out;
-}
-
-lineQueue* getLineQueue()
-{
-    lineQueue* out=(lineQueue*)malloc(sizeof(lineQueue));
-    out->size=0;
-    out->head=NULL;
-    out->tail=NULL;
-    return out;
-}
-
-queueNode* getQueueNode(line* l)
-{
-    queueNode* out=(queueNode*)malloc(sizeof(queueNode));
-    out->next=NULL;
-    out->l=l;
-    return out;
-}
-
-void enqueue(lineQueue* lq,line* l)
-{
-    if(lq==NULL)
-        return;
-    if(lq->size==0)
-    {
-        lq->tail=getQueueNode(l);
-        lq->head=lq->tail;
-    }
-    else
-    {
-        lq->tail->next=getQueueNode(l);
-        lq->tail=lq->tail->next;
-    }
-    lq->size++;
-}
-
-line* dequeue(lineQueue* lq)
-{
-    if(lq==NULL||lq->size==0)
-        return NULL;
-    queueNode* p=lq->head;
-    line* out=p->l;
-    lq->head=p->next;
-    free(p);
-    lq->size--;
-    return out;
-}
+typedef struct nnn{
+    adjacencyList* list;
+    int* pre;
+    int start;
+} minPath;
 
 node* getNode(int val,int weight)
 {
@@ -151,74 +87,82 @@ void setAdjacencyList(adjacencyList* list, int p1, int p2, int weight)
     }
 }
 
-lineQueue* prim(adjacencyList* list)
+minPath* dijkstra(adjacencyList* list,int p0)
 {
-    int *visited=(int*)malloc(sizeof(int)*list->n);
-    memset(visited, 0,sizeof(int)*list->n);
-    visited[0]=1;
-    lineQueue* lq=getLineQueue();
-    int *distance=(int*)malloc(sizeof(int)*list->n);
-    int *pre=(int*)malloc(sizeof(int)*list->n);
+    int *pre=(int*)malloc(list->n*sizeof(int));
+    int *distance=(int*)malloc(list->n*sizeof(int));
+    int *visited=(int*)malloc(list->n*sizeof(int));
     for(int i=0;i<list->n;i++)
     {
-        distance[i]=123456;
         pre[i]=-1;
+        distance[i]=INF;
+        visited[i]=0;
     }
-    node* p=list->data[0]->next;
+    visited[p0]=1;
+    distance[p0]=0;
+    node* p=list->data[p0]->next;
     while(p!=NULL)
     {
-        distance[p->val]=min(distance[p->val],p->weight);
-        pre[p->val]=0;
+        if(p->weight<distance[p->val])
+        {
+            distance[p->val]=p->weight;
+            pre[p->val]=p0;
+        }
         p=p->next;
     }
-    print_int_star(distance,list->n);
-    print_int_star(pre,list->n);
-    print_int_star(visited,list->n);
-    int minDistance=123456;
-    int minLoc=0;
+    int minDistance;
+    int minLoc;
     for(int i=0;i<list->n-1;i++)
     {
-        minDistance=123456;
+        if(visited[i])
+            continue;
+        minDistance=INF;
         minLoc=-1;
         for(int j=0;j<list->n;j++)
         {
-            if(visited[j])
-                continue;
-            if(minDistance>distance[j])
+            if(distance[i]<minDistance)
             {
-                minDistance=distance[j];
-                minLoc=j;
+                minDistance=distance[i];
+                minLoc=i;
             }
         }
         if(minLoc==-1)
             break;
         visited[minLoc]=1;
-        enqueue(lq,getLine(pre[minLoc],minLoc,minDistance));
         p=list->data[minLoc]->next;
         while(p!=NULL)
         {
-            if(distance[p->val]>p->weight)
+            if(distance[p->val]>p->weight+distance[minLoc])
             {
-                distance[p->val]=p->weight;
+                distance[p->val]=p->weight+distance[minLoc];
                 pre[p->val]=minLoc;
             }
             p=p->next;
         }
     }
-    free(visited);
-    free(pre);
     free(distance);
-    return lq;
+    free(visited);
+    minPath *mp=(minPath*)malloc(sizeof(minPath));
+    mp->list=list;
+    mp->pre=pre;
+    mp->start=p0;
+    return mp;
 }
 
-void travelLineQueue(lineQueue* lq)
+void showMinPath(minPath* mp)
 {
-    queueNode* qn=lq->head;
-    printf("%d lines\n",lq->size);
-    while(qn!=NULL)
+    int end;
+    for(int i=0;i<mp->list->n;i++)
     {
-        printf("%d -> %d : %d\n",qn->l->from, qn->l->to,qn->l->weight);
-        qn=qn->next;
+        end=i;
+        while(end!=-1)
+        {
+            printf("%d",end);
+            end=mp->pre[end];
+            if(end!=-1)
+                printf(" -> ");
+        }
+        putchar('\n');
     }
 }
 
@@ -233,7 +177,7 @@ int main()
     setAdjacencyList(list,2,1,4);
     setAdjacencyList(list,2,3,100);
     travelList(list);
-    lineQueue* lq=prim(list);
-    travelLineQueue(lq);
+    minPath* mp=dijkstra(list,1);
+    showMinPath(mp);
     return 0;
 }

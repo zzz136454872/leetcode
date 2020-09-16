@@ -154,6 +154,22 @@ void setAdjacencyList(adjacencyList* list, int p1, int p2, int weight)
     }
 }
 
+adjacencyList* reverseAdjacencyList(adjacencyList* list)
+{
+    adjacencyList* out=getAdjacencyList(list->n);
+    node* p;
+    for(int i=0;i<list->n;i++)
+    {
+        p=list->data[i]->next;
+        while(p!=NULL)
+        {
+            setAdjacencyList(out,p->val,i,p->weight);
+            p=p->next;
+        }
+    }
+    return out;
+}
+
 int main()
 {
     adjacencyMatrix* mat=getAdjacencyMatrix(10);
@@ -166,5 +182,7 @@ int main()
     travelList(list);
     adjacencyMatrix *mat2=adjacencyList2Matrix(list);
     travelMatrix(mat2);
+    adjacencyList* list2=reverseAdjacencyList(list);
+    travelList(list2);
     return 0;
 }
