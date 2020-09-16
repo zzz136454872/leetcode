@@ -19,7 +19,7 @@ typedef struct nnn{
     int** data;
 } adjacencyMatrix;
 
-node* getNode(int val,int weight)
+node* getNode(int val,int weight)Topological sort
 {
     node* out=(node*)malloc(sizeof(node));
     out->val=val;
