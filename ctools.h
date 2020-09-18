@@ -20,5 +20,14 @@ void print_double_star(double *list, int len)
     putchar('\n');
 }
 
+void print_char_2star(char** strings, int len)
+{
+    for(int i=0;i<len;i++)
+    {
+        printf("%s ",strings[i]);
+    }
+    putchar('\n');
+}
+
 #define max(a,b) (((a)>(b))?(a):(b))
 #define min(a,b) (((a)<(b))?(a):(b))
