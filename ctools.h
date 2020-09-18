@@ -29,5 +29,3 @@ void print_char_2star(char** strings, int len)
     putchar('\n');
 }
 
-#define max(a,b) (((a)>(b))?(a):(b))
-#define min(a,b) (((a)<(b))?(a):(b))

@@ -17,6 +17,9 @@ void test()
 }
 #endif
 
+#define max(a,b) (((a)>(b))?(a):(b))
+#define min(a,b) (((a)<(b))?(a):(b))
+
 #ifndef testMod
 // your code here
 
