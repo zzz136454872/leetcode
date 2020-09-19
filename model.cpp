@@ -41,7 +41,6 @@ int main()
 
 #ifndef testMod
     Solution sl;
-
     
 #endif 
     return 0;
