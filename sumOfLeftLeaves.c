@@ -4,6 +4,7 @@
  * @aim a plain model for leetcode
  */
 
+#include"ctree.h"
 #include"ctools.h"
 #include<stdio.h>
 #include<stdlib.h>
@@ -21,21 +22,6 @@ void test()
 #define min(a,b) (((a)<(b))?(a):(b))
 
 #ifndef testMod
-//Definition for a binary tree node.
-struct TreeNode {
-    int val;
-    struct TreeNode *left;
-    struct TreeNode *right;
-};
-
-struct TreeNode* getNode(int val)
-{
-    struct TreeNode* out=(struct TreeNode*)malloc(sizeof(struct TreeNode));
-    out->val=val;
-    out->left=NULL;
-    out->right=NULL;
-    return out;
-}
 
 int isLeaf(struct TreeNode* root)
 {
@@ -68,6 +54,7 @@ int main()
     root->right=getNode(20);
     root->right->left=getNode(15);
     root->right->right=getNode(7);
+    travelTree(root,1);
     printf("%d\n",sumOfLeftLeaves(root));
 #endif
     return 0;
