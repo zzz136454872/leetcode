@@ -1,3 +1,5 @@
+#ifndef cpptools_h
+#define cpptools_h
 #include<iostream>
 #include<string>
 #include<vector>
@@ -61,3 +63,4 @@ void print(vector<vector<string>> a)
         cout<<endl;
     }
 }
+#endif
