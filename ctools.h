@@ -1,4 +1,10 @@
+#ifndef ctool_h
+#define ctool_h
 #include<stdio.h>
+
+#define bool int
+#define true 1
+#define false 0
 
 void print_int_star(int *list, int len)
 {
@@ -29,3 +35,4 @@ void print_char_2star(char** strings, int len)
     putchar('\n');
 }
 
+#endif
