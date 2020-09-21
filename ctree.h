@@ -11,7 +11,7 @@ struct TreeNode {
     struct TreeNode *right;
 };
 
-struct TreeNode* getNode(int val)
+struct TreeNode* getTreeNode(int val)
 {
     struct TreeNode* out=(struct TreeNode*)malloc(sizeof(struct TreeNode));
     out->val=val;
