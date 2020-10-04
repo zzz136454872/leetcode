@@ -6,7 +6,7 @@
 struct ListNode {
     int val;
     struct ListNode *next;
-}
+};
 
 struct ListNode* getListNode(int val)
 {
@@ -23,7 +23,7 @@ void travelList(struct ListNode* head)
         putchar('\n');
         return;
     }
-    printf("%d\n",head->val);
+    printf("%d ",head->val);
     travelList(head->next);
 }
 
