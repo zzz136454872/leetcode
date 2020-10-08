@@ -33,5 +33,5 @@ class Solution:
         return out
 
 sl=Solution()
-print(sl.superEggDrop(2,9))
+print(sl.superEggDrop(3,80))
 
