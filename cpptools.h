@@ -13,7 +13,7 @@ void print(vector<int> a)
     cout<<endl;
 }
 
-void print(vector<vector<int>> a)
+void print(vector<vector<int> > a)
 {
     for(int i=0;i<(int)a.size();i++)
     {
@@ -55,7 +55,7 @@ void print(vector<string> a)
         cout<<a[i]<<endl;
 }
 
-void print(vector<vector<string>> a)
+void print(vector<vector<string> > a)
 {
     for(int i=0;i<(int)a.size();i++)
     {
