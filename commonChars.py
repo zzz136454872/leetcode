@@ -25,3 +25,4 @@ class Solution:
 A=["cool","lock","cook"]
 sl=Solution()
 print(sl.commonChars(A))
+
