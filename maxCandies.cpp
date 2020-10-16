@@ -71,51 +71,57 @@ void test()
 class Solution {
 public:
     int maxCandies(vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes, vector<int>& initialBoxes) {
-        vector<int> visited(status.size());
-        vector<int> haveBox(status.size());
-        int sum=0;
-        for(int i=0;i<(int)initialBoxes.size();i++)
+        this->status=status;
+        this->candies=candies;
+        this->keys=keys;
+        this->containedBoxes=containedBoxes;
+        n=(int)status.size();
+        this->visited=vector<bool>(n,false);
+        this->haveBox=vector<bool>(n,false);
+        candieCount=0;
+        for(int b:initialBoxes)
         {
-            if(visited[initialBoxes[i]]==0&&status[initialBoxes[i]==1])
-            {
-                sum+=visit(initialBoxes[i],status,candies,keys,containedBoxes,haveBox,visited);
-            }
+            haveBox[b]=true;
+            if(!visited[b])
+                visit(b);
         }
-        return sum;
+        return candieCount;
     }
-
-    int visit(int index,vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes, vector<int>& haveBox,vector<int> visited)
-    {
-        visited[index]=1;
-        int sum=candies[index];
-        for(int i=0;i<(int)keys[index].size();i++)
-        {
-            status[keys[index][i]]=1;
-            if(visited[status[i]]==0&&
-               haveBox[status[i]]==1)
-            {
-                sum+=candies[status[i]];
-                visited[status[i]]=1;
-            }
-        }
-
-        for(int i=0;i<(int)containedBoxes[index].size();i++)
-        {
-            haveBox[containedBoxes[index][i]]=1;
-            if(visited[containedBoxes[index][i]]==0&&
-               status[containedBoxes[index][i]]==1)
-            {
-                sum+=visit(containedBoxes[index][i],status,candies,keys,containedBoxes,haveBox,visited);
-                visited[containedBoxes[index][i]]=1;
-            }
-        }
-        return sum;
-    }
-        
+    
 private:
+    void visit(int box)
+    {
+        visited[box]=true;
+        candieCount+=candies[box];
+        for(vector<int> &newKeys:keys)
+        {
+            for(int newKey:newKeys)
+            {
+                status[newKey]=1;
+                if(!visited[newKey]&&haveBox[newKey])
+                    visit(newKey);
+            }
+        }
+        for(vector<int> &newBoxes:containedBoxes)
+        {
+            for(int newBox:newBoxes)
+            {
+                haveBox[newBox]=true;
+                if(!visited[newBox]&&status[newBox]==1)
+                    visit(newBox);
+            }
+        }
+    }
+
+    vector<int> status;
+    vector<int> candies;
+    vector<vector<int>> keys;
+    vector<vector<int>> containedBoxes;
+    vector<bool> visited;
+    vector<bool> haveBox;
+    int n;
+    int candieCount;
 };
-
-
 
 #endif
 
@@ -127,8 +133,12 @@ int main()
 
 #ifndef testMod
     Solution sl;
-
-
+    vector<int> status = {1,0,1,0};
+    vector<int> candies = {7,5,4,100};
+    vector<vector<int>> keys = {{},{},{1},{}};
+    vector<vector<int>> containedBoxes = {{1,2},{3},{},{}};
+    vector<int> initialBoxes = {0};
+    cout<<sl.maxCandies(status,candies,keys,containedBoxes,initialBoxes)<<endl;
     
 #endif 
     return 0;
