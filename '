@@ -8,7 +8,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"clist.h"
 
 //#define testMod
 #ifdef testMod
@@ -22,31 +21,29 @@ void test()
 #define min(a,b) (((a)<(b))?(a):(b))
 
 #ifndef testMod
-struct ListNode* revList(struct ListNode* list)
+
+int cmp(const void* a, const void* b)
 {
-    if(list==NULL||list->next==NULL)
-        return NULL;
-    shi
-
+    int *pa=(int*)a;
+    int *pb=(int*)b;
+    if *pa!=*pb:
+        return *pa-*pb;
+    return *(pb+1)-*(pa+1);
 }
-void reorderList(struct ListNode* head){
-    struct ListNode* p=head,q=head;
-    while(p!=NULL)
+
+int videoStitching(int** clips, int clipsSize, int* clipsColSize, int T){
+    qsort(clips,clipsSize,sizeof(int*),cmp);
+    int log[101];
+    int i;
+    int out=0;
+    int reach=0;
+    for(int i=0;i<clipsSize;i++)
     {
-        p=p->next;
-        if(p!=NULL)
-        {
-            p==p->next;
-            q=q->next;
-        }
+        if(clips[i][0]>reach)
+            return -1;
     }
-    p=q->next;
-    q->next=NULL;
-    p=revList(p);
-    struct ListNode* p1=head;
-    struct ListNode* head2=
+    return out;
 }
-
 #endif
 
 int main()
