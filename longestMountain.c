@@ -17,10 +17,10 @@ void test()
 }
 #endif
 
-#define max(a,b) (((a)>(b))?(a):(b))
 #define min(a,b) (((a)<(b))?(a):(b))
 
 #ifndef testMod
+#define max(a,b) (((a)>(b))?(a):(b))
 int longestMountain(int* A, int ASize){
     int *left=(int*)malloc(sizeof(int)*ASize);
     int *right=(int*)malloc(sizeof(int)*ASize);
