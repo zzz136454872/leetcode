@@ -40,8 +40,6 @@ public:
         int start=i;
         int end=nums.size()-1;
 
-        cout<<"flag "<<i<<endl;
-        
         while(start<end)
         {
             tmp=nums[start];
@@ -50,8 +48,6 @@ public:
             start++;
             end--;
         }
-        cout<<"flag"<<endl;
-        
         unsigned long long j=i;
         if(i==0)
             return;
@@ -80,8 +76,8 @@ int main()
 
 #ifndef testMod
     Solution sl;
-    //vector<int> in = {1,2,3,4,5};
-    vector<int> in={1};
+    vector<int> in = {1,5,2};
+    //vector<int> in={1};
     sl.nextPermutation(in);
     for(unsigned long long i=0;i<in.size();i++)
         cout<<in[i]<<" ";
