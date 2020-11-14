@@ -1,9 +1,5 @@
-
-
-
-
+from typing import *
 
 sl=Solution()
-out=sl.
-
+out=sl.()
 print(out)

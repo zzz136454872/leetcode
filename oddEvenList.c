@@ -29,7 +29,6 @@ struct ListNode* oddEvenList(struct ListNode* head){
     struct ListNode* etail=head;
     struct ListNode* ohead=head->next;
     struct ListNode* otail=head->next;
-    head=head->next->next;
     while(head!=NULL)
     {
         etail->next=head;
