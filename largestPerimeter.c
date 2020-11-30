@@ -35,7 +35,6 @@ int largestPerimeter(int* A, int ASize){
     }
     return 0;
 }
-
 #endif
 
 int main()
