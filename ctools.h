@@ -35,4 +35,18 @@ void print_char_2star(char** strings, int len)
     putchar('\n');
 }
 
+void printmem(void* mem,int length)
+{
+    unsigned char* pmem=mem;
+    int i;
+    for(i=0;i<length;i++)
+    {
+        printf("%x ",pmem[i]);
+        if(i%16==15)
+            putchar('\n');
+    }
+    if(i%16!=0)
+        putchar('\n');
+}
+
 #endif
