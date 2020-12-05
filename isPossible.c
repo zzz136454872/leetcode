@@ -51,9 +51,10 @@ bool isPossible(int* nums, int numsSize){
         if(count<s1+s2)
             return false;
         int rest=count-s1-s2;
-        s3=min(rest, s3);
+        int keep=min(rest, s3);
+        s3=keep+s2;
         s2=s1;
-        s1=rest-s3;
+        s1=rest-keep;
     }
     return s1==0&&s2==0;
 }
