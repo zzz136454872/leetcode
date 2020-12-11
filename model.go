@@ -12,8 +12,6 @@ func test() {
 }
 
 func main() {
-    if testMod {
-        test()
-    }
+    test()
     fmt.Printf("%d\n",1);
 }
