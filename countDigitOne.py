@@ -13,7 +13,7 @@ class Solution:
         return out
 
 sl=Solution()
-n=13
+n=10
 print(sl.countDigitOne(n))
 
             
