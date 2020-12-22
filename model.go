@@ -6,6 +6,16 @@ import(
     //"sort"
 )
 
+func int_min(inp... int) int {
+    out:=inp[0]
+    for _,v := range inp {
+        if out>v {
+            out=v
+        }
+    }
+    return out
+}
+
 var testMod=false;
 
 func test() {

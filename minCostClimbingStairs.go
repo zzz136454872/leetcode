@@ -9,13 +9,17 @@ import(
 var testMod=false;
 
 func test() {
+
 }
 
-func min(a int,b int) int {
-    if a>b {
-        return b
+func int_min(inp... int) int {
+    out:=inp[0]
+    for _,v := range inp {
+        if out>v {
+            out=v
+        }
     }
-    return a
+    return out
 }
 
 func minCostClimbingStairs(cost []int) int {
@@ -23,10 +27,10 @@ func minCostClimbingStairs(cost []int) int {
     log[0]=cost[0]
     log[1]=cost[1]
     for i:=2;i<len(cost);i++ {
-        log[i]=min(log[i-1],log[i-2])+cost[i]
+        log[i]=int_min(log[i-1],log[i-2])+cost[i]
     }
     l:=len(cost)
-    return min(log[l-1],log[l-2])
+    return int_min(log[l-1],log[l-2])
 }
 
 func main() {
