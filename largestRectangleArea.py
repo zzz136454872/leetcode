@@ -1,16 +1,13 @@
 from typing import *
 
 class Solution:
-
     def largestRectangleArea(self, heights: List[int]) -> int:
         heights.append(0)
         heights.insert(0,0)
         stack=[]
         out=0
-        #print(heights)
         for i in range(len(heights)):
             while len(stack)>0 and heights[stack[-1]]>heights[i]:
-                #print(i,stack,out)
                 mid=stack.pop()
                 start=stack[-1]+1
                 end=i-1
