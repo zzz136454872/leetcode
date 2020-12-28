@@ -28,7 +28,7 @@ class Solution2:
         return out
 
 #买卖股票的最佳时机III
-class Solution:
+class Solution3:
     def maxProfit(self, prices: List[int]) -> int:
         k=2
         profit=[0 for i in range(k+1)]
@@ -39,8 +39,20 @@ class Solution:
                 profit[i]=max(profit[i],p-buy[i])
         return profit[-1]
 
+#买卖股票的最佳时机IV
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        k=min(k,len(prices)//2)
+        profit=[0 for i in range(k+1)]
+        buy=[123456789 for i in range(k+1)]
+        for p in prices:
+            for i in range(1,k+1):
+                buy[i]=min(buy[i],p-profit[i-1])
+                profit[i]=max(profit[i],p-buy[i])
+        return profit[-1]
+
 # 销售价值减少的颜色球
-class Solution4:
+class Solution10:
     def maxProfit(self, inventory: List[int], orders: int) -> int:
         if orders==0:
             return 0
@@ -72,7 +84,8 @@ class Solution4:
 # prices=[7,1,5,3,6,4]
 # print(sl.maxProfit(prices))
 
-prices=[3,3,5,0,0,3,1,4]
+k = 2
+prices = [3,2,6,5,0,3]
 sl=Solution()
-print(sl.maxProfit(prices))
+print(sl.maxProfit(k,prices))
             
