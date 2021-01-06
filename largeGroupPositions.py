@@ -19,4 +19,3 @@ inp="abc"
 sl=Solution()
 print(sl.largeGroupPositions(inp))
                 
-
