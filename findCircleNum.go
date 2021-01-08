@@ -88,23 +88,25 @@ func findCircleNum(isConnected [][]int) int {
     n:=len(isConnected)
     visited:=make([]bool,n)
     out:=0
+    var dfs func(int) 
+    dfs=func (loc int) {
+        visited[loc]=true;
+        for j:=0;j<len(isConnected);j++ {
+            if !visited[j]&&isConnected[loc][j]==1 {
+                dfs(j)
+            }
+        }
+    }
+
     for i:=0;i<n;i++ {
         if !visited[i] {
-            dfs(i,visited,isConnected)
+            dfs(i)
             out++
         }
     }
     return out
 }
 
-func dfs(loc int, visited []bool, isConnected [][]int) {
-    visited[loc]=true;
-    for j:=0;j<len(isConnected);j++ {
-        if !visited[j]&&isConnected[loc][j]==1 {
-            dfs(j,visited,isConnected)
-        }
-    }
-}
 
 func main() {
     test()
