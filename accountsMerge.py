@@ -1,60 +1,43 @@
 from typing import *
 
-#wrong answer
 class Solution:
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
+        logs={}
+        class AC():
+            def __init__(self):
+                self.name=None
+                self.emails=set()
 
-        email2id={}
-        id_list=[i for i in range(len(accounts))]
-        
-        # input: int
-        def find(a):
-            if  id_list[a]==a:
-                return a
-            return id_list[a]
-
-        # input: int
-        def union(a,b):
-            a=find(a)
-            b=find(b)
-            if a>b:
-                id_list[a]=b
-            elif a<b:
-                id_list[b]=a
-        
-        for i in range(len(accounts)):
-            account=accounts[i]
-            name=account[0]
-            emails=account[1:]
-            for email in emails:
-                if email not in email2id.keys():
-                    email2id[email]=i
-                else:
-                    j=email2id[email]
-                    union(i,j)
-
-        #print('email2id', email2id)
-        #print('id_list',id_list)
+        for account in accounts:
+            a=set()
+            for email in account[1:]:
+                if email in logs.keys():
+                    a.add(logs[email])
+            if len(a)==0:
+                log=AC()
+                log.name=account[0]
+                for email in account[1:]:
+                    log.emails.add(email)
+                    logs[email]=log
+            elif len(a)==1:
+                log=a.pop()
+                for email in account[1:]:
+                    log.emails.add(email)
+                    logs[email]=log
+            else:
+                # 多个合并
+                log=a.pop()
+                while len(a)>0:
+                    new_log=a.pop()
+                    log.emails|=new_log.emails
+                for email in account[1:]:
+                    log.emails.add(email)
+                for email in log.emails:
+                    logs[email]=log
+        vs=set(logs.values())
         out=[]
-        id2out={}
-        for i in range(len(accounts)):
-            account=accounts[i]
-            name=account[0]
-            emails=account[1:]
-            for email in emails:
-                loc=find(email2id[email])
-                if loc not in id2out.keys():
-                    id2out[loc]=len(out)
-                    out.append([name, email])
-                else:
-                    if email2id[email]==i:
-                        out[id2out[loc]].append(email)
-        for i in range(len(out)):
-            tmp=out[i]
-            name=tmp[0]
-            emails=tmp[1:]
-            emails.sort()
-            out[i]=[name]+emails
+        for v in vs:
+            out.append([v.name]+sorted(list(v.emails)))
         return out
 
 sl=Solution()
