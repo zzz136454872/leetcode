@@ -13,7 +13,6 @@ def rev(a):
     return k%mod
 
 class Fancy:
-
     def __init__(self):
         self.m=1
         self.k=0
