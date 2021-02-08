@@ -1,12 +1,36 @@
 from typing import *
+from time import time
 
 class Solution:
     def minAbsDifference(self, nums: List[int], goal: int) -> int:
-        log=[[-1 for i in range(40*2*10**7)] for i in range(len(nums))]
-        return 1
+        n=len(nums)
+        ln=n//2
+        r=nums[ln:]
+        rn=n-ln
+        def make(lis,loc,lis_out):
+            if loc==len(lis):
+                return lis_out
+            temp=lis_out+[k+lis[loc] for k in lis_out]
+            return make(lis,loc+1,temp)
+        ll=make(nums[:ln],0,[0])
+        rr=make(nums[ln:],0,[0])
+        ll.sort()
+        rr.sort()
+        pl=0
+        pr=2**rn-1
+        out=1234567890
+        while pl<2**ln and pr>=0:
+            out=min(out,abs(ll[pl]+rr[pr]-goal))
+            if ll[pl]+rr[pr]>goal:
+                pr-=1
+            else:
+                pl+=1
+        return out
 
 sl=Solution()
-nums=[850,5012,9656,-9084,-2477,-4194,8047,9151,-4077,-6999]
-goal=-33349
+nums = [1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1,
+        1,1,1,1,1,1,1,1,1,1]
+goal = -5
 print(sl.minAbsDifference(nums,goal))
-
