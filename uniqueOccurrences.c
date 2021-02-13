@@ -50,6 +50,7 @@ int main()
 #ifndef testMod
     int arr[] = {1,2};//,2,1,1,3};
     int size=sizeof(arr)/sizeof(int);
+    print_int_star(arr,size);
     printf("%d\n",uniqueOccurrences(arr,size));
 #endif
     return 0;
