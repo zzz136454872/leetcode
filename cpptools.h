@@ -3,23 +3,22 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<map>
 
 using namespace std;
 //显示中间结果
 void print(vector<int> a)
 {
-    for(int i=0;i<(int)a.size();i++)
-        cout<<a[i]<<" ";
+    for(auto num:a )
+        cout<<num<<" ";
     cout<<endl;
 }
 
 void print(vector<vector<int> > a)
 {
-    for(int i=0;i<(int)a.size();i++)
+    for(auto va: a)
     {
-        for(int j=0;j<(int)a[i].size();j++)
-            cout<<a[i][j]<<" ";
-        cout<<endl;
+        print(va);
     }
 }
 
@@ -62,5 +61,11 @@ void print(vector<vector<string> > a)
         print(a[i]);
         cout<<endl;
     }
+}
+
+void print(map<int,int> a) 
+{
+    for(auto p:a)
+        cout<<p.first<<": "<<p.second<<endl;
 }
 #endif
