@@ -18,5 +18,6 @@ class Solution:
         return length
 
 sl=Solution()
-A=[0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1]
-print(sl.longestOnes(A,3))
+A = [1,1,1,0,0,0,1,1,1,1,0]
+K = 2
+print(sl.longestOnes(A,K))
