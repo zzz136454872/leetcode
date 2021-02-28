@@ -27,6 +27,10 @@ void test()
 #ifndef testMod
 class Solution {
 public:
+    int longestPalindrome(string word1, string word2) {
+        return longestPalindromeSubseq(word1+word2);
+    }
+
     int longestPalindromeSubseq(string s) {
         if(s.size()==0)
             return 0;
@@ -64,8 +68,9 @@ int main()
 
 #ifndef testMod
     Solution sl;
-    string s="bbbab";
-    cout<<sl.longestPalindromeSubseq(s)<<endl;
+    string word1 = "aa";
+    string word2 = "bb";
+    cout<<sl.longestPalindrome(word1,word2)<<endl;
 #endif 
     return 0;
 }
