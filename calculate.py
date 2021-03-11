@@ -20,6 +20,9 @@ def calc(num1,num2,op):
     if op=='/':
         return num1//num2
 
+# 基本计算器
+# 基本计算器II
+# 都可以的
 class Solution:
     def calculate(self, s: str) -> int:
         s=s.replace(' ','')
@@ -34,7 +37,8 @@ class Solution:
                     i+=1
                 l.append(num)
             else:
-                if s[i]=='-' and (i==0 or not s[i-1].isdigit()):
+                if s[i]=='-' and \
+                        (i==0 or(not s[i-1].isdigit() and not s[i-1]==')')):
                     l.append(0)
                 l.append(s[i])
                 i+=1
@@ -65,17 +69,17 @@ class Solution:
                     num_stack.append(calc(num1,num2,op))
                 op_stack.append(l[i])
             i+=1
-        print('out')
+        # print('out')
         while len(op_stack)>0:
-            print(op_stack)
-            print(num_stack)
+            # print(op_stack)
+            # print(num_stack)
             op=op_stack.pop()
             num2=num_stack.pop()
             num1=num_stack.pop()
             num_stack.append(calc(num1,num2,op))
-        print(num_stack)
+        # print(num_stack)
         return num_stack[0]
 
-s="0-2147483647"
+s="(1+(4+5+2)-3)+(6+8)"
 sl=Solution()
 print(sl.calculate(s))
