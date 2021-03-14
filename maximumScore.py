@@ -27,13 +27,36 @@ class Solution:
             out=max(out,log[i][n-i])
         return out
 
+# 好子数组的最大分数
+class Solution:
+    def maximumScore(self, nums: List[int], k: int) -> int:
+        left=[nums[k]]
+        for i in range(k-1,-1,-1):
+            if nums[i]<left[-1]:
+                left.append(nums[i])
+                
+        right=[nums[k]]
+        for i in range(k+1,len(nums)):
+            if nums[i]<right[-1]:
+                right.append(nums[i])
+
+        test_points=list(set(left+right))
+        test_points.sort(reverse=True)
+        l=k
+        r=k
+        out=0
+        for t in test_points:
+            while l>=0 and nums[l]>=t:
+                l-=1
+            while r<len(nums) and nums[r]>=t:
+                r+=1
+            out=max(out,t*(r-l-1))
+        return out
+                
 sl=Solution()
-a = 4
-b = 4
-c = 6
-nums = [1,2]
-multipliers = [2,1]
-# nums = [-5,-3,-3,-2,7,1]
-# multipliers = [-10,-5,3,4,6]
-print(sl.maximumScore(nums,multipliers))
+nums = [1,4,3,7,4,5]
+k = 3
+nums = [5,5,4,5,4,1,1,1]
+k = 0
+print(sl.maximumScore(nums,k))
 
