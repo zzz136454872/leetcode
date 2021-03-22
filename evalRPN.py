@@ -18,7 +18,7 @@ class Solution:
                 elif t=='/':
                     res=int(op_num1/op_num2)
                 stack.append(res)
-            print(stack)
+            # print(stack)
         return stack[0]
 
 sl=Solution()

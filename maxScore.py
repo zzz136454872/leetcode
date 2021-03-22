@@ -21,8 +21,30 @@ class Solution:
             # print(i,out)
         return out
 
+# N 次操作后的最大分数和
+def gcd(n1,n2):
+    while n2!=0:
+        n1,n2=n2,n1%n2
+    return n1
+
+class Solution:
+    def maxScore(self, nums: List[int]) -> int:
+        g={n1:{n2:gcd(n1,n2) for n2 in nums }for n1 in nums}
+        def calc(level,nums):
+            if len(nums)==0:
+                return 0
+            max_num=0
+            for i in range(len(nums)-1):
+                for j in range(i+1,len(nums)):
+                    new_num=nums.copy()
+                    del new_num[j]
+                    del new_num[i]
+                    now=g[nums[i]][nums[j]]*level+calc(level+1,new_num)
+                    max_num=max(max_num,now)
+            return max_num
+        return calc(1,nums)
+
 sl=Solution()
-cardPoints = [1,79,80,1,1,1,200,1]
-k = 3
-print(sl.maxScore(cardPoints,k))
+nums = [1,2,3,4,5,6,1,2,3,4]
+print(sl.maxScore(nums))
 
