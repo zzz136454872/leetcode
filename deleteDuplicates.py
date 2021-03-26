@@ -1,7 +1,8 @@
 from pylist import *
 from typing import *
 
-class Solution:
+# 删除排序链表中的重复元素II
+class Solution1:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         new_val=-12345
         new_head=ListNode(new_val)
@@ -18,17 +19,25 @@ class Solution:
                 p=p.next
         return new_head.next
 
+# 删除排序链表中的重复元素
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        new_val=-12345
+        new_head=ListNode(new_val)
+        new_head.next=head
+        p=new_head
+        while p!=None:
+            q=p.next
+            while q!=None and q.val==p.val:
+                q=q.next
+            p.next=q
+            p=q
+        return new_head.next
+
 sl=Solution()
 # 1->2->3->3->4->4->5
-head=ListNode(1)
-head.next=ListNode(2)
-head.next.next=ListNode(3)
-head.next.next.next=ListNode(3)
-head.next.next.next.next=ListNode(4)
-head.next.next.next.next.next=ListNode(4)
-head.next.next.next.next.next.next=ListNode(5)
+inp=[1,1,2,3,3]
+head=ListNode.fromList(inp)
 ListNode.travel(head)
 out=sl.deleteDuplicates(head)
 ListNode.travel(out)
-new_list=ListNode.fromList([])
-ListNode.travel(new_list)
