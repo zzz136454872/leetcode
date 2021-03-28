@@ -24,10 +24,30 @@ class TreeNode:
         if order=='post':
             print(self.val, end=' ')
 
+    @classmethod
+    def fromStrList(self,s):
+        null=None
+        data=eval(s)
+        if len(data)==1:
+            return None
+        root=TreeNode(data[0])
+        queue=[root]
+        data.pop(0)
+        while len(data)>0:
+            node=queue.pop(0)
+            left=data.pop(0)
+            right=data.pop(0)
+            if left!=None:
+                node.left=TreeNode(left)
+                queue.append(node.left)
+            if right!=None:
+                node.right=TreeNode(right)
+                queue.append(node.right)
+        return root
+    
+
 if __name__=='__main__':
-    root=TreeNode(1)
-    root.left=TreeNode(2)
-    root.right=TreeNode(3)
-    root.left.left=TreeNode(4)
-    root.travel(order='post')
+    inp='[7, 3, 15, null, null, 9, 20]'
+    root=TreeNode.fromStrList(inp)
+    root.travel("mid")
 

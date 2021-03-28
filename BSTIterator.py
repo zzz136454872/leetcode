@@ -24,7 +24,6 @@ class BSTIterator:
     def hasNext(self) -> bool:
         return len(self.nodeStack)>0
 
-# inp=[7, 3, 15, null, null, 9, 20]
 root=TreeNode(7)
 root.left=TreeNode(3)
 root.right=TreeNode(15)
@@ -41,3 +40,4 @@ print(obj.next())
 print(obj.hasNext())
 print(obj.next())
 print(obj.hasNext())
+
