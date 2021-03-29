@@ -1,4 +1,3 @@
-
 from typing import *
 
 # Definition for a binary tree node.
