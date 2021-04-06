@@ -1,8 +1,7 @@
 from typing import *
 
-
 # 删除字符串中的所有相邻重复项
-class Solution:
+class Solution1:
     def removeDuplicates(self, S: str) -> str:
         out=''
         for letter in S:
@@ -14,33 +13,30 @@ class Solution:
                 else:
                     out+=letter
         return out
-sl=Solution()
+sl=Solution1()
 S="abbaca"
 print(sl.removeDuplicates(S))
 
+# 删除有序数组中的重复项 II
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        p=0
+        now=-123456
+        count=0
+        for q in range(len(nums)):
+            if nums[q]!=now:
+                count=1
+                now=nums[q]
+            else:
+                count+=1
 
-# 删除字符串中的所有相邻重复项
-# class Solution:
-#     def removeDuplicates(self, s: str, k: int) -> str:
-#         stack=[]
-#         counter=[]
-#         count=0
-#         for letter in s:
-#             stack.append(letter)
-#             if len(stack)==1:
-#                 count=1
-#             elif letter==stack[-2]:
-#                 count+=1
-#                 if count==k:
-#                     stack=stack[:-k]
-#                     if len(stack)>0:
-#                         count=counter.pop()
-#             else:
-#                 counter.append(count)
-#                 count=1
-#         return ''.join(stack)
-# s = "deeedbbcccbdaa"
-# k = 3
-# sl=Solution()
-# print(sl.removeDuplicates(s,k))
+            if count<3:
+                nums[p]=now
+                p+=1
+        del nums[p:]
+        return p
+sl=Solution()
+nums = [1,1,1,2,2,3]
+print(sl.removeDuplicates(nums))
+print(nums)
             
