@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include"../../ctools.h"
 
-void quickSort(int* array, int start, int end)
+void quickSortMain(int* array, int start, int end)
 {
     if(start>=end)
         return;
@@ -17,15 +17,20 @@ void quickSort(int* array, int start, int end)
         array[j]=array[i];
     }
     array[i]=flag;
-    quickSort(array,start,i-1);
-    quickSort(array,i+1,end);
+    quickSortMain(array,start,i-1);
+    quickSortMain(array,i+1,end);
+}
+
+void quickSort(int* arr,int len)
+{
+    quickSortMain(arr,0,len-1);
 }
 
 int main()
 {
-    int array[]={1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+    int array[]={1,1,3,1,1,1,1,1,1,1,1,1,1,1};
     int len=sizeof(array)/sizeof(int);
-    quickSort(array,0,len-1);
+    quickSort(array,len);
     print_int_star(array,len);
     return 0;
 }
