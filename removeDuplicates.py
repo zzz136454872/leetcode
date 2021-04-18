@@ -17,8 +17,22 @@ sl=Solution1()
 S="abbaca"
 print(sl.removeDuplicates(S))
 
-# 删除有序数组中的重复项 II
+#  删除有序数组中的重复项
+
 class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        i=0
+        j=0
+        while j<len(nums):
+            nums[i]=nums[j]
+            j+=1
+            i+=1
+            while j<len(nums) and nums[j]==nums[j-1]:
+                j+=1
+        return i
+
+# 删除有序数组中的重复项 II
+class Solution2:
     def removeDuplicates(self, nums: List[int]) -> int:
         p=0
         now=-123456
