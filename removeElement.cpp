@@ -40,9 +40,6 @@ public:
         }
         return loc1;
     }
-
-
-        
 private:
 };
 
