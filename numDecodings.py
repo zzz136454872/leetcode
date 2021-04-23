@@ -14,7 +14,7 @@ class Solution:
                 log[i+1]=log[i]
             if s[i-1:i+1] in table:
                 log[i+1]+=log[i-1]
-        print(log)
+        # print(log)
         return log[-1]
 
 sl=Solution()
