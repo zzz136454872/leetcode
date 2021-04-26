@@ -1,5 +1,3 @@
-from typing import *
-
 from pytree import TreeNode
 
 
@@ -13,7 +11,7 @@ class Solution:
                 return
             midorder(root.left)
             nonlocal pre
-            root.left=None
+            root.left = None
 
             if pre is not None:
                 pre.right = root
@@ -28,7 +26,7 @@ class Solution:
         return out
 
 
-inp='[2,1,4,null,null,3]'
+inp = '[2,1,4,null,null,3]'
 root = TreeNode.fromStrList(inp)
 sl = Solution()
 out = sl.increasingBST(root)
