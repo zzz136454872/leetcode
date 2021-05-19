@@ -1,5 +1,9 @@
 from typing import *
 
+def kLargest(nums,k):
+    """返回nums中第k大的数，从1开始计数"""
+    pass
+
 class AuthenticationManager:
     def __init__(self, timeToLive: int):
         self.ttl=timeToLive
