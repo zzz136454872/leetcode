@@ -1,7 +1,8 @@
 from typing import *
 from heapq import *
 
-class Solution:
+# 不知道是哪个
+class Solution1:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         dic=dict()
         for num in nums:
@@ -23,5 +24,19 @@ class Solution:
 nums = [1,1,1,2,2,3]
 k = 2
 
+
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        dic=dict()
+        for word in words:
+            dic[word]=dic.get(word,0)+1
+        log=list(dic.items())
+        log.sort(key=lambda x:(-x[1],x[0]))
+        return [x[0] for x in log[:k]]
+            
 sl=Solution()
-print(sl.topKFrequent(nums,k))
+words=["the", "day", "is", "sunny", "the", "the", "the", "sunny", "is", "is"]
+k = 3
+words=['i','love','leetcode','i','love','coding']
+words=['i','love','leetcode','i','love','coding']
+print(sl.topKFrequent(words,k))
