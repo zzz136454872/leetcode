@@ -15,7 +15,7 @@ class Solution1:
         return log[-1][-1]
 
 # 有界数组中指定下标处的最大值
-class Solution:
+class Solution2:
     def maxValue(self, n: int, index: int, maxSum: int) -> int:
         def count(v):
             out=v
@@ -41,10 +41,25 @@ class Solution:
                 r=mid-1
         return l
 
+# 插入后的最大值
+class Solution:
+    def maxValue(self, n: str, x: int) -> str:
+        if n[0]=='-':
+            i=1
+            while i<len(n) and int(n[i])<=x:
+                i+=1
+            return n[:i]+str(x)+n[i:]
+        i=0
+        while i<len(n) and int(n[i])>=x:
+            i+=1
+        return n[:i]+str(x)+n[i:]
+
 sl=Solution()
 # grid=[[1,2,5],[3,2,1]]
 n = 4
 index = 0
 maxSum = 4
-print(sl.maxValue(n,index,maxSum))
+n = "-132"
+x = 3
+print(sl.maxValue(n,x))
 
