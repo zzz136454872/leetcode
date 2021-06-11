@@ -16,7 +16,7 @@ class Solution:
             if mem[loc][amount_now] != -1:
                 return mem[loc][amount_now]
             out = 0
-            a=amount_now
+            a = amount_now
 
             while a >= 0:
                 out += count(loc + 1, a)
