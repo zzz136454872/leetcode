@@ -4,7 +4,8 @@ class Tester:
         testedClass=eval(opList[0])
         testedInstance=testedClass(*dataList[0])
         for i in range(1,len(opList)):
-            if not dataList[i]:
+            print(opList[i],dataList[i])
+            if not dataList[i][0]:
                 print(getattr(testedInstance,opList[i])())
             else:
                 print(getattr(testedInstance,opList[i])(*dataList[i]))
