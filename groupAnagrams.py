@@ -1,16 +1,21 @@
-from typing import *
+from typing import List
+
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        log={}
+        log = {}
+
         for s in strs:
-            key=''.join(sorted(list(s)))
+            key = ''.join(sorted(list(s)))
+
             if key not in log.keys():
-                log[key]=[s]
+                log[key] = [s]
             else:
                 log[key].append(s)
+
         return list(log.values())
 
-inp=["eat", "tea", "tan", "ate", "nat", "bat"]
-sl=Solution()
+
+inp = ["eat", "tea", "tan", "ate", "nat", "bat"]
+sl = Solution()
 print(sl.groupAnagrams(inp))
