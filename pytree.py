@@ -29,6 +29,24 @@ class TreeNode:
         if order == 'post':
             print(self.val, end=' ')
 
+    def searchNode(self, target):
+        if self.val == target:
+            return self
+
+        if self.left is not None:
+            t = self.left.searchNode(target)
+
+            if t:
+                return t
+
+        if self.right is not None:
+            t = self.right.searchNode(target)
+
+            if t:
+                return t
+
+        return None
+
     @classmethod
     def fromStrList(self, s):
         null = None
