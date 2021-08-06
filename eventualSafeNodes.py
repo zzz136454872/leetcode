@@ -34,5 +34,5 @@ class Solution:
 
 sl = Solution()
 graph = [[1, 2], [2, 3], [5], [0], [5], [], []]
-graph = [[1,2,3,4],[1,2],[3,4],[0,4],[]]
+graph = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
 print(sl.eventualSafeNodes(graph))
