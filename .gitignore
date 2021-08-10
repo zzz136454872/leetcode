@@ -3,3 +3,4 @@
 *.class
 *.gch
 tags
+*.py1.stats
