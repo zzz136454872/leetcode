@@ -4,13 +4,17 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def getKthFromEnd(self, head: ListNode, k: int) -> ListNode:
-        p=head
+        p = head
+
         for i in range(k):
-            p=p.next
-        q=head
-        while p!=None:
-            p=p.next
-            q=q.next
+            p = p.next
+        q = head
+
+        while p is not None:
+            p = p.next
+            q = q.next
+
         return q
