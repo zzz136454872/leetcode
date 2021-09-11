@@ -36,4 +36,5 @@ class Solution:
 
 sl = Solution()
 s = "bbc"
+s = "qwe"
 print(sl.permutation(s))
