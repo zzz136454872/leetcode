@@ -89,7 +89,7 @@ public:
         {
             for(int j=0;j<3;j++)
             {
-                cout<<"i "<<i<<" j "<<j<<endl;
+                //cout<<"i "<<i<<" j "<<j<<endl;
                 if(checkPart(i,j)==false)
                     return false;
             }
