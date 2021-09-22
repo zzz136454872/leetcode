@@ -7,6 +7,7 @@ class ListNode:
     def travel(cls, head):  # 从head开始遍历
         if head is None:
             print('empty linked list')
+            return
 
         while head is not None:
             print(head.val, end=' ')
