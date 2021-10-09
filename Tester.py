@@ -6,7 +6,7 @@ class Tester:
         for i in range(1, len(opList)):
             print(opList[i], dataList[i])
 
-            if not dataList[i][0]:
+            if not dataList[i]:
                 print(getattr(testedInstance, opList[i])())
             else:
                 print(getattr(testedInstance, opList[i])(*dataList[i]))
@@ -21,6 +21,9 @@ if __name__ == '__main__':
         def getA(self):
             return self.a
 
-    opList = ['A', 'getA', 'getA', 'getA']
-    dataList = [[1], None, None, None]
+        def getB(self,b):
+            return b
+
+    opList = ['A', 'getA', 'getA', 'getB']
+    dataList = [[1], None, None, [1234]]
     Tester(opList, dataList)
