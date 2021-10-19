@@ -21,7 +21,7 @@ if __name__ == '__main__':
         def getA(self):
             return self.a
 
-        def getB(self,b):
+        def getB(self, b):
             return b
 
     opList = ['A', 'getA', 'getA', 'getB']
