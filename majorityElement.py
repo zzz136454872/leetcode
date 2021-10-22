@@ -20,7 +20,7 @@ class Solution1:
 
 
 # 求众数2
-class Solution2:
+class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         major = []
         count = []
@@ -59,6 +59,9 @@ class Solution2:
 
         return out
 
+nums=[1,1,2,3,4]
+print(Solution().majorityElement(nums))
+
 
 # 主要元素
 class Solution:
@@ -85,10 +88,10 @@ class Solution:
         return -1
 
 
-sl = Solution()
-inp = [1, 1, 1, 3, 3, 2, 2, 2]
-inp = [1, 2, 5, 9, 5, 9, 5, 5, 5]
-inp = [3, 2]
-inp = [2, 2, 1, 1, 1, 2, 2]
-inp = [1, 2, 3]
-print(sl.majorityElement(inp))
+# sl = Solution()
+# inp = [1, 1, 1, 3, 3, 2, 2, 2]
+# inp = [1, 2, 5, 9, 5, 9, 5, 5, 5]
+# inp = [3, 2]
+# inp = [2, 2, 1, 1, 1, 2, 2]
+# inp = [1, 2, 3]
+# print(sl.majorityElement(inp))
