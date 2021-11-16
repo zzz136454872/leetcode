@@ -10,7 +10,6 @@ class Trie:
 def l2n(a):
     return ord(a) - ord('a')
 
-
 class WordDictionary:
     def __init__(self):
         self.root = Trie()
