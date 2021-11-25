@@ -7,6 +7,7 @@ class ListNode:
     def travel(cls, head):  # 从head开始遍历
         if head is None:
             print('empty linked list')
+
             return
 
         while head is not None:
@@ -24,3 +25,7 @@ class ListNode:
             p = p.next
 
         return virtual_head.next
+
+    def __str__(self):
+        return '<' + __name__ + '.ListNode object at 0x{:016X}'.format(
+            id(self)) + ' val=' + str(self.val) + '>'
