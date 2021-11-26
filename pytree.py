@@ -1,9 +1,9 @@
 class TreeNode:
     # Definition for a binary tree node.
-    def __init__(self, x):
+    def __init__(self, x=0, left=None, right=None):
         self.val = x
-        self.left = None
-        self.right = None
+        self.left = left
+        self.right = right
 
     def travel(self, order='pre'):
         # order : pre,mid,post
