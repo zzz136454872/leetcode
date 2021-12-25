@@ -52,7 +52,7 @@ class TreeNode:
         null = None
         data = eval(s)
 
-        if len(data) == 1:
+        if len(data) == 1 and data[0] is None:
             return None
         root = TreeNode(data[0])
         queue = [root]
@@ -84,5 +84,6 @@ class TreeNode:
 
 if __name__ == '__main__':
     inp = '[7, 3, 15, null, null, 9, 20]'
+    inp = '[1]'
     root = TreeNode.fromStrList(inp)
     root.travel("mid")
