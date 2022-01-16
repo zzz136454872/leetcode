@@ -4,6 +4,7 @@ from typing import Optional
 from pylist import ListNode
 
 
+# 不知道是哪个
 class Solution:
     def __init__(self, head: Optional[ListNode]):
         """
@@ -27,10 +28,45 @@ class Solution:
 
 
 # Your Solution object will be instantiated and called as such:
-head = ListNode(1)
-head.next = ListNode(2)
-head.next.next = ListNode(3)
-sl = Solution(head)
+# head = ListNode(1)
+# head.next = ListNode(2)
+# head.next.next = ListNode(3)
+# sl = Solution(head)
+#
+# for i in range(10):
+#     print(sl.getRandom())
 
-for i in range(10):
-    print(sl.getRandom())
+# 链表随机节点
+
+from random import randrange
+from typing import Optional
+
+from pylist import ListNode
+
+
+class Solution:
+    def __init__(self, head: Optional[ListNode]):
+        self.head = head
+
+    def getRandom(self) -> int:
+        p = self.head
+        out = -1
+        i = 0
+
+        while p is not None:
+            i += 1
+
+            if randrange(i) == 0:
+                out = p.val
+            p = p.next
+
+        return out
+
+
+# Your Solution object will be instantiated and called as such:
+head = [1, 2, 3]
+head = ListNode.fromList(head)
+obj = Solution(head)
+
+for i in range(1000):
+    print(obj.getRandom())
