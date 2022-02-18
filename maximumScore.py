@@ -1,4 +1,4 @@
-from typing import *
+from typing import List
 
 class Solution1:
     def maximumScore(self, a: int, b: int, c: int) -> int:
@@ -9,7 +9,7 @@ class Solution1:
         return sum(log)//2
 
 # 执行乘法运算的最大分数
-
+# WA
 class Solution:
     def maximumScore(self, nums: List[int], multipliers: List[int]) -> int:
         n=len(multipliers)
@@ -23,9 +23,13 @@ class Solution:
                 
         out=-123456789
         print(log)
-        for i in range(n+1):
-            out=max(out,log[i][n-i])
+        for i in range(1,n+1):
+            out=max(out,log[i][n+1-i])
         return out
+
+nums = [1,2,3]
+multipliers = [3,2,1]
+print(Solution().maximumScore(nums,multipliers))
 
 # 好子数组的最大分数
 class Solution:
@@ -53,10 +57,10 @@ class Solution:
             out=max(out,t*(r-l-1))
         return out
                 
-sl=Solution()
-nums = [1,4,3,7,4,5]
-k = 3
-nums = [5,5,4,5,4,1,1,1]
-k = 0
-print(sl.maximumScore(nums,k))
-
+# sl=Solution()
+# nums = [1,4,3,7,4,5]
+# k = 3
+# nums = [5,5,4,5,4,1,1,1]
+# k = 0
+# print(sl.maximumScore(nums,k))
+# 
