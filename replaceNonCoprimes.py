@@ -1,7 +1,5 @@
 from typing import List
 
-# TLE
-
 
 class Node():
     def __init__(self, val):
