@@ -11,6 +11,39 @@ def l2n(a):
     return ord(a) - ord('a')
 
 
+# 词典中最长的单词
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        words.sort()
+        out = ""
+        root = Trie()
+
+        for word in words:
+            p = root
+            flag = True
+
+            for letter in word[:-1]:
+                if p.sons[l2n(letter)] is None:
+                    flag = False
+                else:
+                    p = p.sons[l2n(letter)]
+            letter = word[-1]
+
+            if flag and p.sons[l2n(letter)] is None:
+                p.sons[l2n(letter)] = Trie()
+
+                if len(out) < len(word):
+                    out = word
+
+        return out
+
+
+words = ["w", "wo", "wor", "worl", "world"]
+words = ["a", "banana", "app", "appl", "ap", "apply", "apple"]
+print(Solution().longestWord(words))
+
+
+# 不知道是哪个
 class Solution:
     def longestWord(self, words: List[str]) -> str:
         words.sort(key=lambda x: (-len(x), x))
@@ -44,6 +77,7 @@ class Solution:
 
             if p.has:
                 return 1
+
             return 0
 
         for word in words:
@@ -53,7 +87,7 @@ class Solution:
         return ''
 
 
-sl = Solution()
-inp = ["cat", "banana", "dog", "nana", "walk", "walker", "dogwalker"]
-inp=['c','ccc']
-print(sl.longestWord(inp))
+# sl = Solution()
+# inp = ["cat", "banana", "dog", "nana", "walk", "walker", "dogwalker"]
+# inp=['c','ccc']
+# print(sl.longestWord(inp))
