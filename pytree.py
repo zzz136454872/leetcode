@@ -5,6 +5,9 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __str__(self):
+        return '<TreeNode: '+str(self.val)+'>'
+
     def travel(self, order='pre'):
         # order : pre,mid,post
 
