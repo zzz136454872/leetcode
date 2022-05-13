@@ -1,9 +1,3 @@
-/**
- * @author f4prime
- * @email zzz136454872@163.com
- * @aim a plain model for leetcode
- */
-
 #include"ctools.h"
 #include<stdio.h>
 #include<stdlib.h>
