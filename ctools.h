@@ -1,6 +1,8 @@
 #ifndef ctool_h
 #define ctool_h
 #include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
 
 #define bool int
 #define true 1
@@ -51,6 +53,15 @@ void printmem(void* mem,int length)
     }
     if(i%16!=0)
         putchar('\n');
+}
+
+char** malloc_char_2star(char* a,int size1,int size2) {
+    char** res=(char**)malloc(sizeof(char*)*size1);
+    for(int i=0;i<size1;i++) {
+        res[i]=(char*)malloc(sizeof(char)*(strlen(a+i*size2)+1));
+        strcpy(res[i],a+i*size2);
+    }
+    return res;
 }
 
 #endif
