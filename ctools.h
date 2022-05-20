@@ -64,4 +64,13 @@ char** malloc_char_2star(char* a,int size1,int size2) {
     return res;
 }
 
+int** malloc_int_2star(int* a,int size1,int size2) {
+    int** res=(int**)malloc(sizeof(int*)*size1);
+    for(int i=0;i<size1;i++) {
+        res[i]=(int*)malloc(sizeof(int)*size2);
+        memcpy(res[i],a+i*size2,sizeof(int)*size2);
+    }
+    return res;
+}
+
 #endif
