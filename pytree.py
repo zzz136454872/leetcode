@@ -55,7 +55,7 @@ class TreeNode:
         null = None
         data = eval(s)
 
-        if len(data) == 1 and data[0] is None:
+        if len(data)==0 or len(data) == 1 and data[0] is None:
             return None
         root = TreeNode(data[0])
         queue = [root]
