@@ -29,6 +29,10 @@ public class Tools {
         print(Arrays.stream(arr).boxed().toArray());
     }
 
+    public static void print(double[] arr) {
+        print(Arrays.stream(arr).boxed().toArray());
+    }
+
     public static void print(boolean[] arr) {
         Boolean[] tmp=new Boolean[arr.length];
         for(int i=0;i<arr.length;i++) {
@@ -87,6 +91,11 @@ public class Tools {
     }
 
     public static void println(int[] arr) {
+        print(arr);
+        println();
+    }
+
+    public static void println(double[] arr) {
         print(arr);
         println();
     }
