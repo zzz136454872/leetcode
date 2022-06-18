@@ -9,10 +9,17 @@ class ListNode:
             print('empty linked list')
 
             return
+        mem = set()
 
         while head is not None:
+            mem.add(head)
             print(head.val, end=' ')
             head = head.next
+
+            if head in mem:
+                print('loop from', head.val, end='')
+
+                break
         print()
 
     @classmethod
@@ -29,3 +36,11 @@ class ListNode:
     def __str__(self):
         return '<' + __name__ + '.ListNode object at 0x{:016X}'.format(
             id(self)) + ' val=' + str(self.val) + '>'
+
+    def getTail(self):
+        p = self
+
+        while p.next != None:
+            p = p.next
+
+        return p
