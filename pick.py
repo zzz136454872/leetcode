@@ -18,7 +18,7 @@ class Tester:
 
 
 # 黑名单中的随机数 710
-class Solution:
+class Solution0:
     def __init__(self, N: int, blacklist: List[int]):
         self.dict = {}
         self.now = 1
@@ -80,7 +80,7 @@ class Solution1:
 
 
 # 497. 非重叠矩形中的随机点
-class Solution:
+class Solution2:
     def __init__(self, rects: List[List[int]]):
         self.rects = rects
         self.mem = [0]
@@ -109,8 +109,34 @@ class Solution:
         return [self.rects[left][0] + a % dx, self.rects[left][1] + a // dx]
 
 
-opList = ["Solution", "pick", "pick", "pick", "pick", "pick"]
-dataList = [[[[-2, -2, -1, -1], [1, 0, 3, 0]]], [], [], [], [], []]
-opList = ["Solution", "pick", "pick", "pick", "pick", "pick"]
-dataList = [[[[-2, -2, 1, 1], [2, 2, 4, 6]]], [], [], [], [], []]
-Tester(opList, dataList)
+# opList = ["Solution", "pick", "pick", "pick", "pick", "pick"]
+# dataList = [[[[-2, -2, -1, -1], [1, 0, 3, 0]]], [], [], [], [], []]
+# opList = ["Solution", "pick", "pick", "pick", "pick", "pick"]
+# dataList = [[[[-2, -2, 1, 1], [2, 2, 4, 6]]], [], [], [], [], []]
+# Tester(opList, dataList)
+
+# 710. 黑名单中的随机数
+class Solution:
+
+    def __init__(self, n: int, blacklist: List[int]):
+        if len(blacklist)>=0.5*n:
+            self.accept=list({i for i in range(n)}-set(blacklist))
+            self.kind=2
+            return
+        self.blacklist=set(blacklist)
+        self.n=n
+        self.kind=1
+
+    def pick(self) -> int:
+        if self.kind==1:
+            while True:
+                r=randint(0,self.n-1)
+                if r not in self.blacklist:
+                    return r
+        r=randint(0,len(self.accept)-1)
+        return self.accept[r]
+
+opList=["Solution", "pick", "pick", "pick", "pick", "pick", "pick", "pick"]
+dataList=[[7, [1,2, 3, 5]], [], [], [], [], [], [], []]
+Tester(opList,dataList)
+
