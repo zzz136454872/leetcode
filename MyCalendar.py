@@ -45,7 +45,7 @@ class MyCalendar:
 
         while p.next != None and p.next.val[0] < start:
             p = p.next
-        print(p)
+        # print(p)
 
         if p.val[1] > start:
             return False
