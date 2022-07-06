@@ -1,5 +1,6 @@
-from typing import *
+from typing import List
 
+# 不知道是哪个
 class Solution:
     def evaluate(self, s: str, knowledge: List[List[str]]) -> str:
         knowledge=dict(knowledge)
@@ -22,7 +23,8 @@ class Solution:
             i+=1
         return ''.join(out)
 
-sl=Solution()
-s = "(name)is(age)yearsold"
-knowledge = [["name","bob"],["age","two"]]
-print(sl.evaluate(s,knowledge))
+# sl=Solution()
+# s = "(name)is(age)yearsold"
+# knowledge = [["name","bob"],["age","two"]]
+# print(sl.evaluate(s,knowledge))
+
