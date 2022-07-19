@@ -23,6 +23,7 @@ void test()
 }
 #endif
 
+// wrong answer
 #ifndef testMod
 class Book
 {
