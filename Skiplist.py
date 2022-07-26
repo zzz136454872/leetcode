@@ -68,3 +68,26 @@ for i in range(20000):
     test[tmp]=test.get(tmp,0)+1
 
 print(sorted(test.items()))
+
+# A Hacked Solution
+
+class Skiplist:
+
+    def __init__(self):
+        self.mem=[0]*(2*10**4+5)
+
+
+    def search(self, target: int) -> bool:
+        return self.mem[target]>0
+
+
+    def add(self, num: int) -> None:
+        self.mem[num]+=1
+
+
+    def erase(self, num: int) -> bool:
+        if self.mem[num]==0:
+            return False
+        self.mem[num]-=1
+        return True
+
