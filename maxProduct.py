@@ -1,7 +1,8 @@
 from typing import List
 
 
-class Solution:
+# 不知道是哪个
+class Solution1:
     def maxProduct(self, words: List[str]) -> int:
         out = 0
 
@@ -30,7 +31,16 @@ class Solution:
         return out
 
 
-inp = ["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]
-inp = ["a", "ab", "abc", "d", "cd", "bcd", "abcd"]
-inp = ["a", "aa", "aaa", "aaaa"]
-print(Solution().maxProduct(inp))
+# inp = ["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]
+# inp = ["a", "ab", "abc", "d", "cd", "bcd", "abcd"]
+# inp = ["a", "aa", "aaa", "aaaa"]
+#
+# print(Solution().maxProduct(inp))
+
+
+# 1464. 数组中两元素的最大乘积
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        nums.sort()
+
+        return (nums[-1] - 1) * (nums[-2] - 1)
