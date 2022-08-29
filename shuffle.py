@@ -2,7 +2,8 @@ from random import randint
 from typing import List
 
 
-class Solution:
+# 不知道是哪个
+class Solution1:
     def __init__(self, nums: List[int]):
         self.ori = nums.copy()
         self.nums = nums
@@ -22,3 +23,19 @@ class Solution:
 # obj = Solution(nums)
 # param_1 = obj.reset()
 # param_2 = obj.shuffle()
+
+
+class Solution:
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        res = []
+
+        for i in range(n):
+            res.append(nums[i])
+            res.append(nums[i + n])
+
+        return res
+
+
+nums = [2, 5, 1, 3, 4, 7]
+n = 3
+print(Solution().shuffle(nums, n))
