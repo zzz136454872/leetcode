@@ -38,7 +38,7 @@ class Solution1:
 
 
 # 得到子序列的最少操作次数
-class Solution:
+class Solution2:
     def minOperations(self, target: List[int], arr: List[int]) -> int:
         mem = {}
 
@@ -76,12 +76,32 @@ class Solution:
         return len(target) - lcs
 
 
-sl = Solution()
+# sl = Solution()
+#
+# target = [5, 1, 3]
+# arr = [9, 4, 2, 3, 4]
+#
+# target = [6, 4, 8, 1, 3, 2]
+# arr = [4, 7, 6, 2, 3, 8, 6, 1]
 
-target = [5, 1, 3]
-arr = [9, 4, 2, 3, 4]
+# print(sl.minOperations(target, arr))
 
-target = [6, 4, 8, 1, 3, 2]
-arr = [4, 7, 6, 2, 3, 8, 6, 1]
 
-print(sl.minOperations(target, arr))
+class Solution:
+    def minOperations(self, logs: List[str]) -> int:
+        depth = 0
+
+        for log in logs:
+            if log == '../':
+                if depth > 0:
+                    depth -= 1
+            elif log == './':
+                continue
+            else:
+                depth += 1
+
+        return depth
+
+
+logs = ["d1/", "d2/", "../", "d21/", "./"]
+print(Solution().minOperations(logs))
