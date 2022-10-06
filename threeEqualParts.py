@@ -1,49 +1,55 @@
-from typing import *
+from typing import List
 
-#totally garbage
+
+# totally garbage
 class Solution:
-    def threeEqualParts(self, A: List[int]) -> List[int]:
-        n=A.count(1)
-        if n%3!=0:
-            return [-1,-1]
-        if n==0:
-            if len(A)>2:
-                return [0,2]
-            else:
-                return [-1,-1]
-        count=0
-        for i in range(len(A)):
-            if A[i]==1:
-                count+=1
-                if count==n//3*2+1:
-                    loc=i
+    def threeEqualParts(self, arr: List[int]) -> List[int]:
+        n = arr.count(1)
+
+        if n % 3 != 0:
+            return [-1, -1]
+
+        if n == 0:
+            return [0, 2]
+        count = 0
+        n //= 3
+
+        for i in range(len(arr) - 1, -1, -1):
+            if arr[i] == 1:
+                count += 1
+
+                if count == n:
+                    loc = i
+
                     break
-        strA=''
-        for num in A:
-            strA+=str(num)
-        num3=int(strA[loc:],2)
-        loc2=strA.index(strA[loc:])
-        loc2=loc2+len(strA[loc:])
-        if loc2>=loc:
-            return [-1,-1]
 
-        locmid=loc2+strA[loc2:].index(strA[loc:])
-        midend=locmid+len(strA[loc:])
-        if midend>loc:
-            return [-1,-1]
-        num1=int(strA[:loc2],2)
-        for i in range(midend,loc+1):
-            num2=int(strA[loc2:i],2)
-            if num1==num2:
-                return [loc2-1,i]
-        return [-1,-1]
+        print('flag 1', loc)
 
-inp=[1,1,0,0,1]
-#inp=[1,1,0,1,1]
-#inp=[1,0,1,0,1]
-#inp=[0,1,0,1,1]
-sl=Solution()
-print(sl.threeEqualParts(inp))
-        
-        
+        for i in range(len(arr)):
+            if arr[i] == 1:
+                start = i
 
+                break
+
+        for i in range(len(arr) - loc):
+            if arr[i + start] != arr[i + loc]:
+                return [-1, -1]
+        start += len(arr) - loc
+
+        for i in range(start, loc):
+            if arr[i] == 1:
+                start2 = i
+
+                break
+
+        for i in range(len(arr) - loc):
+            if arr[i + start2] != arr[i + loc]:
+                return [-1, -1]
+
+        return [start - 1, start2 + len(arr) - loc]
+
+
+arr = [1, 0, 1, 0, 1]
+arr = [1, 1, 0, 1, 1]
+arr = [1, 1, 0, 0, 1]
+print(Solution().threeEqualParts(arr))
