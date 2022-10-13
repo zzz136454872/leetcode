@@ -1,8 +1,8 @@
 from typing import List
 
+
 # 768. 最多能完成排序的块 II
-
-
+# 769. 最多能完成排序的块
 class Solution:
     def maxChunksToSorted(self, arr: List[int]) -> int:
         def same(a, b):
