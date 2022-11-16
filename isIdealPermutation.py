@@ -1,7 +1,8 @@
 from typing import List
 
 
-class Solution:
+# 775. 全局倒置与局部倒置
+class Solution1:
     def isIdealPermutation(self, nums: List[int]) -> bool:
         res1 = 0
         n = len(nums)
@@ -45,6 +46,20 @@ class Solution:
         return tmp == res1
 
 
+# nums = [1, 0, 2]
+# nums = [1, 2, 0]
+# print(Solution().isIdealPermutation(nums))
+
+
+# 更快一些的方法
+class Solution:
+    def isIdealPermutation(self, nums: List[int]) -> bool:
+        for i in range(len(nums)):
+            if abs(nums[i] - i) > 1:
+                return False
+
+        return True
+
+
 nums = [1, 0, 2]
-nums = [1, 2, 0]
 print(Solution().isIdealPermutation(nums))
