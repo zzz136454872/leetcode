@@ -87,6 +87,7 @@ class Solution2:
 # print(sl.minOperations(target, arr))
 
 
+# 不知道是哪个
 class Solution:
     def minOperations(self, logs: List[str]) -> int:
         depth = 0
@@ -103,5 +104,31 @@ class Solution:
         return depth
 
 
-logs = ["d1/", "d2/", "../", "d21/", "./"]
-print(Solution().minOperations(logs))
+# logs = ["d1/", "d2/", "../", "d21/", "./"]
+# print(Solution().minOperations(logs))
+
+
+# 1758. 生成交替二进制字符串的最少操作数
+class Solution:
+    def minOperations(self, s: str) -> int:
+        c1 = 0
+        c2 = 0
+
+        for i in range(len(s)):
+            if i % 2 == 0:
+                if s[i] == '0':
+                    c1 += 1
+                else:
+                    c2 += 1
+            else:
+                if s[i] == '0':
+                    c2 += 1
+                else:
+                    c1 += 1
+        print(c1, c2)
+
+        return min(c1, c2)
+
+
+s = "0100"
+print(Solution().minOperations(s))
