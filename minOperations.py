@@ -1,8 +1,8 @@
 from typing import List
 
 
-# can not remember what this is
-class Solution1:
+# 1769. 移动所有球到每个盒子所需的最小操作数
+class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         boxes = [int(i) for i in boxes]
         left = [0 for i in boxes]
@@ -23,7 +23,7 @@ class Solution1:
             if boxes[i]:
                 tmp += i
         out = [tmp]
-        print(left, right)
+        # print(left, right)
 
         for i in range(1, len(boxes)):
             tmp += left[i] - right[i - 1]
@@ -32,9 +32,10 @@ class Solution1:
         return out
 
 
+boxes = "110"
 # boxes = "001011"
-# sl = Solution()
-# print(sl.minOperations(boxes))
+sl = Solution()
+print(sl.minOperations(boxes))
 
 
 # 得到子序列的最少操作次数
@@ -88,7 +89,7 @@ class Solution2:
 
 
 # 不知道是哪个
-class Solution:
+class Solution3:
     def minOperations(self, logs: List[str]) -> int:
         depth = 0
 
@@ -109,7 +110,7 @@ class Solution:
 
 
 # 1758. 生成交替二进制字符串的最少操作数
-class Solution:
+class Solution4:
     def minOperations(self, s: str) -> int:
         c1 = 0
         c2 = 0
@@ -130,5 +131,5 @@ class Solution:
         return min(c1, c2)
 
 
-s = "0100"
-print(Solution().minOperations(s))
+# s = "0100"
+# print(Solution().minOperations(s))
