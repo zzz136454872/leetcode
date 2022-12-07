@@ -2,7 +2,7 @@ from typing import List
 
 
 # 1769. 移动所有球到每个盒子所需的最小操作数
-class Solution:
+class Solution1:
     def minOperations(self, boxes: str) -> List[int]:
         boxes = [int(i) for i in boxes]
         left = [0 for i in boxes]
@@ -32,10 +32,10 @@ class Solution:
         return out
 
 
-boxes = "110"
+# boxes = "110"
 # boxes = "001011"
-sl = Solution()
-print(sl.minOperations(boxes))
+# sl = Solution()
+# print(sl.minOperations(boxes))
 
 
 # 得到子序列的最少操作次数
@@ -133,3 +133,65 @@ class Solution4:
 
 # s = "0100"
 # print(Solution().minOperations(s))
+
+
+# 1775. 通过最少操作次数使数组的和相等
+class Solution:
+    def minOperations(self, nums1: List[int], nums2: List[int]) -> int:
+        nums1.sort()
+        nums2.sort()
+        s1 = sum(nums1)
+        s2 = sum(nums2)
+
+        if s1 > s2:
+            s1, s2 = s2, s1
+            nums1, nums2 = nums2, nums1
+        diff = s2 - s1
+
+        if diff == 0:
+            return 0
+        # print(nums1,nums2,diff)
+        i = 0
+        j = len(nums2) - 1
+        res = 0
+
+        while True:
+            res += 1
+            d1 = 0
+            d2 = 0
+
+            if i < len(nums1):
+                d1 = 6 - nums1[i]
+                # print('d1',d1)
+
+            if j >= 0:
+                d2 = nums2[j] - 1
+                # print('d2',d2)
+
+            if d1 > d2:
+                i += 1
+                d = d1
+            else:
+                j -= 1
+                d = d2
+
+            if d >= diff:
+                return res
+
+            if d == 0:
+                return -1
+            diff -= d
+            # print(i,j,d,diff)
+
+        return -1
+
+
+nums1 = [1, 2, 3, 4, 5, 6]
+nums2 = [1, 1, 2, 2, 2, 2]
+nums1 = [1, 1, 1, 1, 1, 1, 1]
+nums2 = [6]
+nums1 = [6, 6]
+nums2 = [1]
+nums1 = [5, 6, 4, 3, 1, 2]
+nums2 = [6, 3, 3, 1, 4, 5, 3, 4, 1, 3, 4]
+print(Solution().minOperations(nums1, nums2))
