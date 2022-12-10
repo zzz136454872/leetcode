@@ -9,9 +9,8 @@ class Solution:
 
         for i in range(len(cuboids)):
             for j in range(i - 1, -1, -1):
-                if cuboids[i][0] >= cuboids[j][0] and\
-                        cuboids[i][1] >= cuboids[j][1] and\
-                        cuboids[i][2] >= cuboids[j][2]:
+                if cuboids[i][0] >= cuboids[j][0] and cuboids[i][1] >= cuboids[
+                        j][1] and cuboids[i][2] >= cuboids[j][2]:
                     height[i] = max(height[i], cuboids[i][2] + height[j])
 
         return max(height)
