@@ -136,7 +136,7 @@ class Solution4:
 
 
 # 1775. 通过最少操作次数使数组的和相等
-class Solution:
+class Solution5:
     def minOperations(self, nums1: List[int], nums2: List[int]) -> int:
         nums1.sort()
         nums2.sort()
@@ -186,12 +186,30 @@ class Solution:
         return -1
 
 
-nums1 = [1, 2, 3, 4, 5, 6]
-nums2 = [1, 1, 2, 2, 2, 2]
-nums1 = [1, 1, 1, 1, 1, 1, 1]
-nums2 = [6]
-nums1 = [6, 6]
-nums2 = [1]
-nums1 = [5, 6, 4, 3, 1, 2]
-nums2 = [6, 3, 3, 1, 4, 5, 3, 4, 1, 3, 4]
-print(Solution().minOperations(nums1, nums2))
+# nums1 = [1, 2, 3, 4, 5, 6]
+# nums2 = [1, 1, 2, 2, 2, 2]
+# nums1 = [1, 1, 1, 1, 1, 1, 1]
+# nums2 = [6]
+# nums1 = [6, 6]
+# nums2 = [1]
+# nums1 = [5, 6, 4, 3, 1, 2]
+# nums2 = [6, 3, 3, 1, 4, 5, 3, 4, 1, 3, 4]
+# print(Solution().minOperations(nums1, nums2))
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        res = 0
+
+        for i in range(1, len(nums)):
+            if nums[i] <= nums[i - 1]:
+                res += nums[i - 1] + 1 - nums[i]
+                nums[i] = nums[i - 1] + 1
+
+        return res
+
+
+nums = [1, 1, 1]
+nums = [1, 5, 2, 4, 1]
+nums = [8]
+print(Solution().minOperations(nums))
