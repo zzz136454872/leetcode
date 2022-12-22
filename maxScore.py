@@ -1,4 +1,4 @@
-from typing import *
+from typing import List
 
 
 # 不知道是哪个
@@ -39,10 +39,15 @@ def gcd(n1, n2):
 class Solution:
     def maxScore(self, nums: List[int]) -> int:
         g = {n1: {n2: gcd(n1, n2) for n2 in nums} for n1 in nums}
+        mem = {}
 
         def calc(level, nums):
             if len(nums) == 0:
                 return 0
+            tnums = tuple(nums)
+
+            if tnums in mem:
+                return mem[tnums]
             max_num = 0
 
             for i in range(len(nums) - 1):
@@ -54,9 +59,18 @@ class Solution:
                         level + 1, new_num)
                     max_num = max(max_num, now)
 
+            mem[tnums] = max_num
+
             return max_num
 
         return calc(1, nums)
+
+
+nums = [
+    773274, 313112, 131789, 222437, 918065, 49745, 321270, 74163, 900218,
+    80160, 325440, 961730
+]
+print(Solution().maxScore(nums))
 
 
 #  分割字符串的最大得分
@@ -78,9 +92,9 @@ class Solution:
         return out
 
 
-sl = Solution()
-nums = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4]
-s = "011101"
-s = "00111"
-# s = "111"
-print(sl.maxScore(s))
+# sl = Solution()
+# nums = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4]
+# s = "011101"
+# s = "00111"
+# # s = "111"
+# print(sl.maxScore(s))
