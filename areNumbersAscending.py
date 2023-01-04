@@ -9,7 +9,6 @@ class Solution:
         for token in s:
             if token[0].isdigit():
                 token = int(token)
-                print(token)
 
                 if token <= pre:
                     return False
