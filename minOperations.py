@@ -197,7 +197,8 @@ class Solution5:
 # print(Solution().minOperations(nums1, nums2))
 
 
-class Solution:
+# 不知道是哪个
+class Solution6:
     def minOperations(self, nums: List[int]) -> int:
         res = 0
 
@@ -209,7 +210,40 @@ class Solution:
         return res
 
 
-nums = [1, 1, 1]
-nums = [1, 5, 2, 4, 1]
-nums = [8]
-print(Solution().minOperations(nums))
+# nums = [1, 1, 1]
+# nums = [1, 5, 2, 4, 1]
+# nums = [8]
+# print(Solution().minOperations(nums))
+
+
+# 将 x 减到 0 的最小操作数
+class Solution:
+    def minOperations(self, nums: List[int], x: int) -> int:
+        if x == 0:
+            return 0
+        s = sum(nums)
+        t = s - x
+        tmp = 0
+        res = len(nums) + 1
+        j = 0
+
+        for i in range(len(nums)):
+            while j < len(nums) and tmp < t:
+                tmp += nums[j]
+                j += 1
+
+            if tmp == t:
+                res = min(res, len(nums) - (j - i))
+            tmp -= nums[i]
+
+        return res if res != len(nums) + 1 else -1
+
+
+nums = [1, 1, 4, 2, 3]
+x = 5
+nums = [5, 6, 7, 8, 9]
+x = 4
+
+nums = [3, 2, 20, 1, 1, 3]
+x = 10
+print(Solution().minOperations(nums, x))
