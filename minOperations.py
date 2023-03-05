@@ -217,7 +217,7 @@ class Solution6:
 
 
 # 将 x 减到 0 的最小操作数
-class Solution:
+class Solution7:
     def minOperations(self, nums: List[int], x: int) -> int:
         if x == 0:
             return 0
@@ -239,11 +239,24 @@ class Solution:
         return res if res != len(nums) + 1 else -1
 
 
-nums = [1, 1, 4, 2, 3]
-x = 5
-nums = [5, 6, 7, 8, 9]
-x = 4
+# nums = [1, 1, 4, 2, 3]
+# x = 5
+# nums = [5, 6, 7, 8, 9]
+# x = 4
+# nums = [3, 2, 20, 1, 1, 3]
+# x = 10
+# print(Solution().minOperations(nums, x))
 
-nums = [3, 2, 20, 1, 1, 3]
-x = 10
-print(Solution().minOperations(nums, x))
+
+# 1551. 使数组中所有元素相等的最小操作数
+class Solution:
+    def minOperations(self, n: int) -> int:
+        if n % 2 == 0:
+            return n**2 // 4
+
+        return (n + 1) * (n - 1) // 4
+
+
+n = 3
+n = 6
+print(Solution().minOperations(n))
