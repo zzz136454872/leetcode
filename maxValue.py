@@ -1,7 +1,8 @@
-from typing import *
+from typing import List
 
 
-class Solution1:
+# Offer 47 礼物的最大价值
+class Solution:
     def maxValue(self, grid: List[List[int]]) -> int:
         log = [[0 for j in range(len(grid[0]))] for i in range(len(grid))]
 
@@ -14,10 +15,12 @@ class Solution1:
         for i in range(1, len(grid)):
             for j in range(1, len(grid[0])):
                 log[i][j] = max(log[i - 1][j], log[i][j - 1]) + grid[i][j]
-        print(grid)
-        print(log)
 
         return log[-1][-1]
+
+
+inp = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+print(Solution().maxValue(inp))
 
 
 # 有界数组中指定下标处的最大值
@@ -53,7 +56,7 @@ class Solution2:
 
 
 # 插入后的最大值
-class Solution:
+class Solution3:
     def maxValue(self, n: str, x: int) -> str:
         if n[0] == '-':
             i = 1
@@ -70,11 +73,11 @@ class Solution:
         return n[:i] + str(x) + n[i:]
 
 
-sl = Solution()
-# grid=[[1,2,5],[3,2,1]]
-n = 4
-index = 0
-maxSum = 4
-n = "-132"
-x = 3
-print(sl.maxValue(n, x))
+# sl = Solution()
+# # grid=[[1,2,5],[3,2,1]]
+# n = 4
+# index = 0
+# maxSum = 4
+# n = "-132"
+# x = 3
+# print(sl.maxValue(n, x))
