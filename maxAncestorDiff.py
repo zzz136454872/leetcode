@@ -1,4 +1,3 @@
-
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -6,45 +5,52 @@ class TreeNode:
         self.left = None
         self.right = None
 
+
 class Solution:
     def maxAncestorDiff(self, root: TreeNode) -> int:
         return self.diff(root)[2]
 
-    def diff(self,root):
+    def diff(self, root):
         #print(root.val,root.left.val if root.left!=None else None,
         #        root.right.val if root.right!=None else None)
-        if root.left==None and root.right==None:
-            return (root.val,root.val,0)
-        maxval=root.val
-        minval=root.val
-        maxdiff=0
-        if root.left!=None:
-            out=self.diff(root.left)
-            maxval=max(out[0],maxval)
-            minval=min(out[1],minval)
-            maxdiff=max(maxval-root.val,root.val-minval,out[2])
+
+        if root.left == None and root.right == None:
+            return (root.val, root.val, 0)
+        maxval = root.val
+        minval = root.val
+        maxdiff = 0
+
+        if root.left != None:
+            out = self.diff(root.left)
+            maxval = max(out[0], maxval)
+            minval = min(out[1], minval)
+            maxdiff = max(maxval - root.val, root.val - minval, out[2])
         #print(maxdiff)
-        if root.right!=None:
-            out=self.diff(root.right)
-            maxval=max(out[0],maxval)
-            minval=min(out[1],minval)
-            maxdiff=max(maxval-root.val,root.val-minval,out[2],maxdiff)
-        out=(maxval,minval,maxdiff) 
+
+        if root.right != None:
+            out = self.diff(root.right)
+            maxval = max(out[0], maxval)
+            minval = min(out[1], minval)
+            maxdiff = max(maxval - root.val, root.val - minval, out[2],
+                          maxdiff)
+        out = (maxval, minval, maxdiff)
         #print(out)
+
         return out
 
-sl=Solution()
-head=TreeNode(0)
-head.left=TreeNode(3)
+
+sl = Solution()
+head = TreeNode(0)
+head.left = TreeNode(3)
 #head.left=p
-head.right=TreeNode(10)
+head.right = TreeNode(10)
 #p.right=head
 #head=p
-p=TreeNode(8)
-q=head
-head=TreeNode(2)
-head.left=q
-head.right=p
+p = TreeNode(8)
+q = head
+head = TreeNode(2)
+head.left = q
+head.right = p
 #p.right=head
 #head=p
 
