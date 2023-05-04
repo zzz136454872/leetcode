@@ -2,7 +2,7 @@ from typing import *
 
 
 # 不知道是哪个
-class Solution:
+class Solution1:
     def isValid(self, s: str) -> bool:
         pair = {'}': '{', ']': '[', ')': '('}
         stack = []
@@ -20,7 +20,7 @@ class Solution:
 
 
 # 标签验证器
-class Solution:
+class Solution2:
     def isValid(self, code: str) -> bool:
         stack = []
 
@@ -77,14 +77,39 @@ class Solution:
         return len(stack) == 0
 
 
-code = "<DIV>This is the first line <![CDATA[<div>]]></DIV>"
-code = "<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>"
-code = "<A>  <B> </A>   </B>"
-code = "<DIV>  div tag is not closed  <DIV>"
-code = "<DIV>  unmatched <  </DIV>"
-code = "<DIV> closed tags with invalid tag name  <b>123</b> </DIV>"
-code = "<DIV> unmatched tags with invalid tag name  </1234567890> and <CDATA[[]]>  </DIV>"
-code = "<DIV>  unmatched start tag <B>  and unmatched end tag </C>  </DIV>"
-code = "<![CDATA[wahaha]]]><![CDATA[]> wahaha]]>"
-code = "<A<></A<>"
-print(Solution().isValid(code))
+# code = "<DIV>This is the first line <![CDATA[<div>]]></DIV>"
+# code = "<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>"
+# code = "<A>  <B> </A>   </B>"
+# code = "<DIV>  div tag is not closed  <DIV>"
+# code = "<DIV>  unmatched <  </DIV>"
+# code = "<DIV> closed tags with invalid tag name  <b>123</b> </DIV>"
+# code = "<DIV> unmatched tags with invalid tag name  </1234567890> and <CDATA[[]]>  </DIV>"
+# code = "<DIV>  unmatched start tag <B>  and unmatched end tag </C>  </DIV>"
+# code = "<![CDATA[wahaha]]]><![CDATA[]> wahaha]]>"
+# code = "<A<></A<>"
+# print(Solution().isValid(code))
+
+
+# 1003. 检查替换后的词是否有效
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+
+        for letter in s:
+            if letter == 'c':
+                if len(stack) >= 2 and stack[-1] == 'b' and stack[-2] == 'a':
+                    stack.pop()
+                    stack.pop()
+                else:
+                    stack.append(letter)
+            else:
+                stack.append(letter)
+            # print(letter, ''.join(stack))
+
+        return len(stack) == 0
+
+
+s = "aabcbc"
+s = "abcabcababcc"
+s = "abccba"
+print(Solution().isValid(s))
