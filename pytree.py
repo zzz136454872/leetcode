@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     # Definition for a binary tree node.
     def __init__(self, x=0, left=None, right=None):
@@ -6,7 +9,7 @@ class TreeNode:
         self.right = right
 
     def __str__(self):
-        return '<TreeNode: '+str(self.val)+'>'
+        return '<TreeNode: ' + str(self.val) + '>'
 
     def travel(self, order='pre'):
         # order : pre,mid,post
@@ -55,7 +58,7 @@ class TreeNode:
         null = None
         data = eval(s)
 
-        if len(data)==0 or len(data) == 1 and data[0] is None:
+        if len(data) == 0 or len(data) == 1 and data[0] is None:
             return None
         root = TreeNode(data[0])
         queue = [root]
@@ -84,9 +87,29 @@ class TreeNode:
 
         return root
 
+    def toStrList(self):
+        queue = deque([self])
+        res = []
+
+        while len(queue) > 0:
+            now = queue.popleft()
+
+            if now is None:
+                res.append(now)
+            else:
+                res.append(now.val)
+                queue.append(now.left)
+                queue.append(now.right)
+
+        while len(res) > 0 and res[-1] is None:
+            res.pop()
+
+        return str(res).replace('None', 'null').replace(' ', '')
+
 
 if __name__ == '__main__':
     inp = '[7, 3, 15, null, null, 9, 20]'
     inp = '[1]'
     root = TreeNode.fromStrList(inp)
     root.travel("mid")
+    print(root.toStrList())
