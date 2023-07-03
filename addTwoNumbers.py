@@ -19,7 +19,7 @@ def reverse(x):
     return p
 
 
-# 不知道是哪个
+# addTwoNumbers
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         l1 = reverse(l1)
@@ -44,10 +44,6 @@ class Solution:
             out = tmp
             p = p.next
             q = q.next
-            #ListNode.travel(p)
-            #ListNode.travel(q)
-            #print('out')
-            #ListNode.travel(start)
 
         while p != None:
             now = p.val + j
@@ -85,27 +81,15 @@ class Solution:
         return reverse(start)
 
 
-# p=ListNode(7)
-# q=p
-# q.next=ListNode(2)
-# q=q.next
-# q.next=ListNode(4)
-# q=q.next
-# q.next=ListNode(3)
-# q=q.next
-#
-# r=ListNode(5)
-# q=r
-# q.next=ListNode(6)
-# q=q.next
-# q.next=ListNode(4)
-#
-# ListNode.travel(p)
-# ListNode.travel(r)
-#
-# sl=Solution()
-# out=sl.addTwoNumbers(p,r)
-# ListNode.travel(out)
+l1 = [7, 2, 4, 3]
+l2 = [5, 6, 4]
+l1 = [0]
+l2 = [0]
+l1 = ListNode.fromList(l1)
+l2 = ListNode.fromList(l2)
+sl = Solution()
+out = sl.addTwoNumbers(l1, l2)
+ListNode.travel(out)
 
 
 # 2. 两数相加
