@@ -6,7 +6,7 @@ class Solution:
         p = head
         mem = set()
 
-        while head != None:
+        while head is not None:
             if head in mem:
                 return head
             mem.add(head)
