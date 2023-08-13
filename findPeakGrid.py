@@ -16,8 +16,8 @@ class Solution:
             flag = True
 
             for n in range(4):
-                ni = i + dirs[n][0]
-                nj = j + dirs[n][1]
+                ni = i + dirs[(n+idx)%4][0]
+                nj = j + dirs[(n+idx)%4][1]
 
                 if ni < 0 or ni >= len(mat) or nj < 0 or nj >= len(mat[0]):
                     continue
