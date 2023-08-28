@@ -1,34 +1,29 @@
 from typing import List
 
 
-# 不知道是哪个
-class Solution1:
+# 56. 合并区间
+class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         intervals.sort(key=lambda x: x[0])
         i = 0
+        res = [intervals[0]]
 
-        while i < len(intervals) - 1:
-            if intervals[i][1] >= intervals[i + 1][0]:
-                tmp = [
-                    intervals[i][0],
-                    max(intervals[i + 1][1], intervals[i][1])
-                ]
-                del intervals[i]
-                del intervals[i]
-                intervals.insert(i, tmp)
+        for i in range(1, len(intervals)):
+            if intervals[i][0] > res[-1][1]:
+                res.append(intervals[i])
             else:
-                i += 1
+                res[-1][1] = max(res[-1][1], intervals[i][1])
 
-        return intervals
+        return res
 
 
-# inp=[[1,3],[2,6],[8,10],[15,18]]
-# sl=Solution()
-# print(sl.merge(inp))
+inp = [[1, 3], [2, 6], [8, 10], [15, 18]]
+sl = Solution()
+print(sl.merge(inp))
 
 
 # 合并两个有序数组
-class Solution:
+class Solution2:
     def merge(self, nums1: List[int], m: int, nums2: List[int],
               n: int) -> None:
         nums12 = nums1[:m]
@@ -56,10 +51,10 @@ class Solution:
                 p2 += 1
 
 
-sl = Solution()
-nums1 = [1, 2, 3, 0, 0, 0]
-m = 3
-nums2 = [2, 5, 6]
-n = 3
-sl.merge(nums1, m, nums2, n)
-print(nums1)
+# sl = Solution()
+# nums1 = [1, 2, 3, 0, 0, 0]
+# m = 3
+# nums2 = [2, 5, 6]
+# n = 3
+# sl.merge(nums1, m, nums2, n)
+# print(nums1)
