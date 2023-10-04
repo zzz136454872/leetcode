@@ -1,49 +1,30 @@
-/**
- * @author f4prime
- * @email zzz136454872@163.com
- * @aim a plain model for leetcode
- */
-#include"cpptools.h"
-#include<iostream>
-#include<string>
-#include<vector>
-#include<algorithm>
-#include<map>
-#include<stack>
-#include<queue>
-#include<set>
-
-using namespace std;
-
-//#define testMod
-
-#ifdef testMod
-void test()
-{
-    
-}
-#endif
-
-#ifndef testMod
-class Solution {
-public:
+from collections import defaultdict
+from typing import List
 
 
-        
-private:
-};
-#endif
+class Solution:
+    def fullBloomFlowers(self, flowers: List[List[int]],
+                         people: List[int]) -> List[int]:
+        mem = defaultdict(int)
 
-int main()
-{
-#ifdef testMod
-    test();
-#endif
+        for f in flowers:
+            mem[f[0]] += 1
+            mem[f[1] + 1] -= 1
+        mem2 = sorted(mem.items())
+        ps = sorted([[people[i], i, 0] for i in range(len(people))])
+        j = 0
+        tmp = 0
 
-#ifndef testMod
-    Solution sl;
-    
-#endif 
-    return 0;
-}
+        for i in range(len(ps)):
+            while j < len(mem2) and mem2[j][0] <= ps[i][0]:
+                tmp += mem2[j][1]
+                j += 1
+            ps[i][2] = tmp
+        ps.sort(key=lambda x: x[1])
 
+        return [x[2] for x in ps]
+
+
+flowers = [[1, 6], [3, 7], [9, 12], [4, 13]]
+people = [2, 3, 7, 11]
+print(Solution().fullBloomFlowers(flowers, people))

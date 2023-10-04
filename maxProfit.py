@@ -1,4 +1,4 @@
-from typing import *
+from typing import List
 
 # 买卖股票的最佳时机
 class Solution1:
