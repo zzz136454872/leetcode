@@ -21,7 +21,8 @@ void test() {}
 #endif
 
 #ifndef testMod
-class Solution {
+// 不知道是哪个
+class Solution1 {
 public:
   int maxProfit(vector<int> &prices) {
     int premin = 123456;
@@ -35,6 +36,25 @@ public:
 
 private:
 };
+
+class Solution {
+public:
+  int maxProfit(vector<int> &prices) {
+    int hold = -1234;
+    int cold = 0;
+    int sell = 0;
+    int presell = 0;
+    for (int &p : prices) {
+      presell = sell;
+      sell = max(sell, cold);
+      cold = hold + p;
+      hold = max(hold, presell - p);
+      // cout<<p<<" "<<sell<<" "<<hold<<" "<<cold<<endl;
+    }
+    return max(sell, cold);
+  }
+};
+
 #endif
 
 int main() {
@@ -43,9 +63,10 @@ int main() {
 #endif
 
 #ifndef testMod
-  Solution sl;
-  vector<int> prices = {7, 1, 5, 3, 6, 4};
-  cout << sl.maxProfit(prices) << endl;
+  // vector<int> prices = {7, 1, 5, 3, 6, 4};
+  // cout << Solution().maxProfit(prices) << endl;
+  vector<int> prices = {1, 2, 3, 0, 2};
+  cout << Solution().maxProfit(prices) << endl;
 #endif
   return 0;
 }
