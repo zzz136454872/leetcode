@@ -37,7 +37,8 @@ public:
 private:
 };
 
-class Solution {
+// 买卖股票的最佳时机含冷静期
+class Solution2 {
 public:
   int maxProfit(vector<int> &prices) {
     int hold = -1234;
@@ -55,6 +56,22 @@ public:
   }
 };
 
+// 714. 买卖股票的最佳时机含手续费
+class Solution {
+public:
+  int maxProfit(vector<int> &prices, int fee) {
+    int h = -prices[0];
+    int u = 0;
+    for (int i = 1; i < int(prices.size()); i++) {
+      int nh = max(h, u - prices[i]);
+      int nu = max(u, h + prices[i] - fee);
+      h = nh;
+      u = nu;
+    }
+    return u;
+  }
+};
+
 #endif
 
 int main() {
@@ -65,8 +82,11 @@ int main() {
 #ifndef testMod
   // vector<int> prices = {7, 1, 5, 3, 6, 4};
   // cout << Solution().maxProfit(prices) << endl;
-  vector<int> prices = {1, 2, 3, 0, 2};
-  cout << Solution().maxProfit(prices) << endl;
+  // vector<int> prices = {1, 2, 3, 0, 2};
+  // cout << Solution().maxProfit(prices) << endl;
+  vector<int> prices = {1, 3, 2, 8, 4, 9};
+  int fee = 2;
+  cout << Solution().maxProfit(prices, fee) << endl;
 #endif
   return 0;
 }

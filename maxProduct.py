@@ -1,7 +1,7 @@
 from typing import List
 
 
-# 不知道是哪个
+# LCR 005. 最大单词长度乘积
 class Solution1:
     def maxProduct(self, words: List[str]) -> int:
         out = 0
