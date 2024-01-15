@@ -1,6 +1,4 @@
-from typing import *
-
-from pylist import *
+from pylist import ListNode
 
 
 # 删除排序链表中的重复元素II
