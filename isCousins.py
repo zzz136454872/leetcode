@@ -1,5 +1,7 @@
 from typing import *
-from pytree import *
+
+from pytree import TreeNode
+
 
 class Solution:
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
@@ -10,8 +12,10 @@ class Solution:
         def search(root,level):
             nonlocal x_level,x_parent
             nonlocal y_level,y_parent
+
             if root is None:
                 return 
+
             if root.left!=None:
                 if root.left.val==x:
                     x_level=level+1
@@ -20,6 +24,7 @@ class Solution:
                     y_level=level+1
                     y_parent=root
                 search(root.left, level+1)
+
             if root.right!=None:
                 if root.right.val==x:
                     x_level=level+1
@@ -29,8 +34,10 @@ class Solution:
                     y_parent=root
                 search(root.right, level+1)
         search(root,0)
+
         if x_level!=-1 and x_level==y_level and x_parent!=y_parent:
             return True
+
         return False
 
 sl=Solution()
