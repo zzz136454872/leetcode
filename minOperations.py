@@ -260,3 +260,17 @@ class Solution:
 n = 3
 n = 6
 print(Solution().minOperations(n))
+
+
+# 3375. 使数组的值全部为 K 的最少操作次数
+class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        mem = set()
+
+        for num in nums:
+            if num < k:
+                return -1
+            mem.add(num)
+        mem.discard(k)
+
+        return len(mem)
