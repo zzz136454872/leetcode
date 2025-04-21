@@ -1,5 +1,5 @@
 from bisect import bisect_right
-from collections import defaultdict
+from collections import Counter, defaultdict
 from typing import List
 
 
@@ -144,7 +144,21 @@ class Solution:
         return res
 
 
-n = 4
-edges = [[1, 2], [2, 4], [1, 3], [2, 3], [2, 1]]
-queries = [2, 3]
-print(Solution().countPairs(n, edges, queries))
+# n = 4
+# edges = [[1, 2], [2, 4], [1, 3], [2, 3], [2, 1]]
+# queries = [2, 3]
+# print(Solution().countPairs(n, edges, queries))
+
+
+# 2176. 统计数组中相等且可以被整除的数对
+class Solution:
+    def countPairs(self, nums: List[int], k: int) -> int:
+        res = 0
+
+        for i in range(len(nums) - 1):
+            for j in range(i + 1, len(nums)):
+                if nums[i] != nums[j] or i * j % k != 0:
+                    continue
+                res += 1
+
+        return res
